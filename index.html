@@ -1062,6 +1062,132 @@
         }
 
         /* ========================================
+           GRAFFITI ARTIST PROGRAM
+           ======================================== */
+        .graffiti-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .graffiti-section::before {
+            content: 'GRAFFITI ARTIST';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-5deg);
+            font-family: var(--font-heading);
+            font-size: 8rem;
+            font-weight: 700;
+            color: rgba(232, 119, 34, 0.04);
+            white-space: nowrap;
+            pointer-events: none;
+            letter-spacing: 0.05em;
+        }
+
+        .graffiti-intro {
+            max-width: 700px;
+            margin: 0 auto 3.5rem;
+            text-align: center;
+        }
+
+        .graffiti-intro p {
+            font-size: 1.05rem;
+            color: var(--gray-600);
+            line-height: 1.7;
+        }
+
+        .graffiti-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.25rem;
+        }
+
+        .graffiti-card {
+            position: relative;
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-200);
+            transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .graffiti-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease, transform 0.6s ease, box-shadow var(--transition-normal);
+        }
+
+        .graffiti-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .graffiti-card-visual {
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .graffiti-card-visual .graffiti-emoji {
+            font-size: 3.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .graffiti-card-visual::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 0.08;
+        }
+
+        .graffiti-card:nth-child(1) .graffiti-card-visual { background: linear-gradient(135deg, #0C2340 0%, #1a3a5c 100%); }
+        .graffiti-card:nth-child(2) .graffiti-card-visual { background: linear-gradient(135deg, #E87722 0%, #c45f0a 100%); }
+        .graffiti-card:nth-child(3) .graffiti-card-visual { background: linear-gradient(135deg, #1a3a5c 0%, #0C2340 100%); }
+        .graffiti-card:nth-child(4) .graffiti-card-visual { background: linear-gradient(135deg, #c45f0a 0%, #E87722 100%); }
+        .graffiti-card:nth-child(5) .graffiti-card-visual { background: linear-gradient(135deg, #0C2340 0%, #2a4a6c 100%); }
+        .graffiti-card:nth-child(6) .graffiti-card-visual { background: linear-gradient(135deg, #E87722 0%, #ff8c3a 100%); }
+        .graffiti-card:nth-child(7) .graffiti-card-visual { background: linear-gradient(135deg, #334155 0%, #1e293b 100%); }
+        .graffiti-card:nth-child(8) .graffiti-card-visual { background: linear-gradient(135deg, #1a3a5c 0%, #0C2340 100%); }
+
+        .graffiti-card-body {
+            padding: 1.25rem 1.25rem 1.5rem;
+        }
+
+        .graffiti-card-body h4 {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--auburn-navy);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            margin-bottom: 0.4rem;
+        }
+
+        .graffiti-card-body p {
+            font-size: 0.82rem;
+            color: var(--gray-600);
+            line-height: 1.6;
+        }
+
+        .graffiti-tag {
+            display: inline-block;
+            font-family: var(--font-heading);
+            font-size: 0.6rem;
+            font-weight: 700;
+            color: var(--auburn-orange);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-top: 0.75rem;
+        }
+
+        /* ========================================
            RESPONSIVE
            ======================================== */
         @media (max-width: 1024px) {
@@ -1079,6 +1205,10 @@
 
             .approach-grid {
                 grid-template-columns: repeat(3, 1fr);
+            }
+
+            .graffiti-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
 
             .steps-grid {
@@ -1141,8 +1271,13 @@
             .focus-grid,
             .venues-grid,
             .approach-grid,
-            .investment-summary {
+            .investment-summary,
+            .graffiti-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .graffiti-section::before {
+                font-size: 3rem;
             }
 
             .venue-featured {
@@ -1266,6 +1401,7 @@
                         <li>Informational Displays</li>
                         <li>Live Game Feeds & Replays</li>
                         <li>Broadcast Monitoring</li>
+                        <li>Graffiti Artist Program</li>
                     </ul>
                 </div>
 
@@ -1358,8 +1494,113 @@
         </div>
     </section>
 
+    <!-- GRAFFITI ARTIST PROGRAM -->
+    <section id="graffiti" class="section section-alt graffiti-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Graffiti Artist Program</h2>
+                <div class="title-accent-line"></div>
+                <p class="section-subtitle">Transforming bare walls and dead spaces into immersive Auburn experiences</p>
+            </div>
+            <div class="graffiti-intro">
+                <p>Every venue has blank walls, empty concourses, and underused spaces. The Graffiti Artist Program brings in professional artists to turn those spaces into permanent, branded experiences that tell Auburn's story and give fans a reason to explore.</p>
+            </div>
+            <div class="graffiti-grid">
+
+                <div class="graffiti-card">
+                    <div class="graffiti-card-visual">
+                        <span class="graffiti-emoji">🏛️</span>
+                    </div>
+                    <div class="graffiti-card-body">
+                        <h4>History Corner</h4>
+                        <p>Dedicated wall spaces showcasing Auburn's storied history — founding moments, legendary seasons, and the traditions that define the program.</p>
+                        <span class="graffiti-tag">Every Venue</span>
+                    </div>
+                </div>
+
+                <div class="graffiti-card">
+                    <div class="graffiti-card-visual">
+                        <span class="graffiti-emoji">🏆</span>
+                    </div>
+                    <div class="graffiti-card-body">
+                        <h4>Record Corner</h4>
+                        <p>All-time records, record holders, and career stat leaders displayed in bold street-art style. Updated seasonally as records fall.</p>
+                        <span class="graffiti-tag">Sport-Specific</span>
+                    </div>
+                </div>
+
+                <div class="graffiti-card">
+                    <div class="graffiti-card-visual">
+                        <span class="graffiti-emoji">🎨</span>
+                    </div>
+                    <div class="graffiti-card-body">
+                        <h4>Murals</h4>
+                        <p>Large-scale, artist-designed murals of iconic Auburn moments — the Kick Six, Bo over the top, Aubie's first appearance. Statement pieces for every venue.</p>
+                        <span class="graffiti-tag">Signature Pieces</span>
+                    </div>
+                </div>
+
+                <div class="graffiti-card">
+                    <div class="graffiti-card-visual">
+                        <span class="graffiti-emoji">🦅</span>
+                    </div>
+                    <div class="graffiti-card-body">
+                        <h4>Traditions Wall</h4>
+                        <p>War Eagle, Toomer's Corner, Tiger Walk, "Bodda Getta" — Auburn's unique traditions captured in vibrant, larger-than-life artwork.</p>
+                        <span class="graffiti-tag">Auburn Identity</span>
+                    </div>
+                </div>
+
+                <div class="graffiti-card">
+                    <div class="graffiti-card-visual">
+                        <span class="graffiti-emoji">⭐</span>
+                    </div>
+                    <div class="graffiti-card-body">
+                        <h4>Player Legacy Portraits</h4>
+                        <p>Larger-than-life portraits of Auburn legends — Bo Jackson, Cam Newton, Charles Barkley, Pat Sullivan — in bold graffiti-art style.</p>
+                        <span class="graffiti-tag">Hall of Fame</span>
+                    </div>
+                </div>
+
+                <div class="graffiti-card">
+                    <div class="graffiti-card-visual">
+                        <span class="graffiti-emoji">🏅</span>
+                    </div>
+                    <div class="graffiti-card-body">
+                        <h4>Sport-Specific Art</h4>
+                        <p>Custom artwork celebrating each sport's Auburn history. The War Eagle Wall at Plainsman Park. Swimming dynasty at the Aquatics Center. Each venue tells its own story.</p>
+                        <span class="graffiti-tag">Per Venue</span>
+                    </div>
+                </div>
+
+                <div class="graffiti-card">
+                    <div class="graffiti-card-visual">
+                        <span class="graffiti-emoji">📱</span>
+                    </div>
+                    <div class="graffiti-card-body">
+                        <h4>Interactive Art Wall</h4>
+                        <p>QR-code-enabled murals that come alive on your phone — scan to see video highlights, hear player interviews, and explore stats behind the art.</p>
+                        <span class="graffiti-tag">Tech + Art</span>
+                    </div>
+                </div>
+
+                <div class="graffiti-card">
+                    <div class="graffiti-card-visual">
+                        <span class="graffiti-emoji">🎓</span>
+                    </div>
+                    <div class="graffiti-card-body">
+                        <h4>Community Canvas</h4>
+                        <p>Rotating wall space for Auburn students and local artists to create Auburn-themed works. Fresh art each season, community connection year-round.</p>
+                        <span class="graffiti-tag">Rotating</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <!-- VENUES -->
-    <section id="venues" class="section section-alt">
+    <section id="venues" class="section">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">10 Auburn Venues</h2>
@@ -1718,7 +1959,7 @@
         }, observerOptions);
 
         function initAnimations() {
-            const animatedElements = document.querySelectorAll('.focus-card, .venue-card, .approach-card, .summary-card, .step-card');
+            const animatedElements = document.querySelectorAll('.focus-card, .graffiti-card, .venue-card, .approach-card, .summary-card, .step-card');
             animatedElements.forEach((el, index) => {
                 const siblings = el.parentElement.children;
                 const siblingIndex = Array.from(siblings).indexOf(el);
