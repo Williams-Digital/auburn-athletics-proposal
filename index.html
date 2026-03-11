@@ -237,8 +237,8 @@
         .hero-bg {
             position: absolute;
             inset: 0;
-            background: url('https://auburntigers.com/images/2023/8/21/JHS_Sunset_8_19_23__5_.jpg') center/cover no-repeat;
-            opacity: 0.35;
+            background: url('https://auburntigers.com/imgproxy/JpouFcDvIpd19oEpipE3hO-aOuntOL-m1yxlKITXtJs/rs:fit:1920:0:0:0/q:90/aHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL2F1YnVybi1wcm9kLzIwMjUvMDkvMTAvS0ZkS01LMG03T3lKdjZkUWlvMWpqY3VzWEtVUGp1djdwSVJuckpHTy5qcGc.jpg') center/cover no-repeat;
+            opacity: 0.4;
         }
 
         .hero-overlay {
@@ -628,11 +628,29 @@
             display: flex;
             align-items: flex-start;
             justify-content: space-between;
+            position: relative;
+            min-height: 140px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .venue-card-header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(12,35,64,0.45) 0%, rgba(12,35,64,0.85) 100%);
+            z-index: 1;
+        }
+
+        .venue-card-header > * {
+            position: relative;
+            z-index: 2;
         }
 
         .venue-icon {
             font-size: 2.5rem;
             line-height: 1;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
         }
 
         .venue-capacity {
@@ -701,8 +719,8 @@
         }
 
         .venue-featured .venue-card-header {
-            background: linear-gradient(135deg, var(--auburn-navy-dark), var(--auburn-navy), var(--auburn-navy-light));
             padding: 2rem 2rem 1.75rem;
+            min-height: 180px;
         }
 
         .venue-featured .venue-icon {
@@ -1619,7 +1637,7 @@
 
                 <!-- Jordan-Hare Stadium (Featured) -->
                 <div class="venue-card venue-featured" data-type="outdoor" data-venue="jordan-hare">
-                    <div class="venue-card-header">
+                    <div class="venue-card-header" style="background-image: url('https://auburntigers.com/imgproxy/JpouFcDvIpd19oEpipE3hO-aOuntOL-m1yxlKITXtJs/rs:fit:1920:0:0:0/q:90/aHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL2F1YnVybi1wcm9kLzIwMjUvMDkvMTAvS0ZkS01LMG03T3lKdjZkUWlvMWpqY3VzWEtVUGp1djdwSVJuckpHTy5qcGc.jpg')">
                         <div class="venue-icon">🏟️</div>
                         <div class="venue-capacity">88,043</div>
                     </div>
@@ -1640,7 +1658,7 @@
 
                 <!-- Neville Arena -->
                 <div class="venue-card" data-type="indoor" data-venue="neville-arena">
-                    <div class="venue-card-header">
+                    <div class="venue-card-header" style="background-image: url('https://auburntigers.com/imgproxy/F7BcHc4e3SCTzSKyLvZ4GdahWwSOOrWRRrsOs2bIMcM/rs:fit:1980:0:0:0/g:ce:0:0/q:90/aHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL2F1YnVybi1wcm9kLzIwMjQvMDUvMTMvNnlxejM2MWJvOW95VHpyRmtTQ1BSNXBDVFhkREx1WlpGMTA4V29IWS5qcGc.jpg')">
                         <div class="venue-icon">🏀</div>
                         <div class="venue-capacity">9,121</div>
                     </div>
@@ -1661,7 +1679,7 @@
 
                 <!-- Plainsman Park -->
                 <div class="venue-card" data-type="outdoor" data-venue="plainsman-park">
-                    <div class="venue-card-header">
+                    <div class="venue-card-header" style="background-image: url('https://auburntigers.com/imgproxy/R-ttmDrcl7FfliviUp-bgqZpsO-kGuFklxQ6wbUUpWk/rs:fit:1200:630:0:0/g:ce:0:0/q:70/aHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL2F1YnVybi1wcm9kLzIwMjUvMTAvMTcvbDVlRVF1dkpnRFo3TlA1VDBWR0lhR2lXU0RNbjBLc1pXQ1NQSDdGMS5qcGc.jpg')">
                         <div class="venue-icon">&#9918;</div>
                         <div class="venue-capacity">7,189</div>
                     </div>
@@ -1681,7 +1699,7 @@
 
                 <!-- Jane B. Moore Field -->
                 <div class="venue-card" data-type="outdoor" data-venue="moore-field">
-                    <div class="venue-card-header">
+                    <div class="venue-card-header" style="background-image: url('https://auburntigers.com/imgproxy/_dfbjlC8DH8INr8PHUzA9TQfhgNn6APBuPXjp83_MCE/rs:fit:1980:0:0:0/g:ce:0:0/q:90/aHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL2F1YnVybi1wcm9kLzIwMjQvMDUvMjIvWTBvTE1qV0lRYU1FYTlrRkEwblNETDJjSDdtQVNjYUwzeDlGSFBEaS5qcGc.jpg')">
                         <div class="venue-icon">🥎</div>
                         <div class="venue-capacity">2,900</div>
                     </div>
@@ -1701,7 +1719,7 @@
 
                 <!-- Auburn Soccer Complex -->
                 <div class="venue-card" data-type="outdoor" data-venue="soccer-complex">
-                    <div class="venue-card-header">
+                    <div class="venue-card-header" style="background-image: url('https://auburntigers.com/imgproxy/v5HvQ59XF2nLx21C4x4h835aIA84dQYeKXrmGi1Y_Dg/rs:fit:1980:0:0:0/g:ce:0:0/q:90/aHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL2F1YnVybi1wcm9kLzIwMjQvMDUvMjEvM1k0Q3J1UUJjTjczcHBKNzBMT0pUNTBmMTBSMUluRFVWbThxOFNjQS5qcGc.jpg')">
                         <div class="venue-icon">&#9917;</div>
                         <div class="venue-capacity">1,500</div>
                     </div>
@@ -1721,7 +1739,7 @@
 
                 <!-- Woltosz Football Performance Center -->
                 <div class="venue-card" data-type="operations" data-venue="woltosz">
-                    <div class="venue-card-header">
+                    <div class="venue-card-header" style="background-image: url('https://auburntigers.com/imgproxy/ngp9hOa2uX6kaNrkxGC3YxtfzVvX16GkVSAspmq1lg4/rs:fit:1200:630:0:0/g:ce:0:0/q:70/aHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL2F1YnVybi1wcm9kLzIwMjQvMDUvMTYvajQ4M0lkV2NZdUtHN09DeWI2MmxVY1M3dnpSUjhBZnVINkZ5RDZ5ci5qcGc.jpg')">
                         <div class="venue-icon">🏈</div>
                         <div class="venue-capacity">Operations</div>
                     </div>
@@ -1739,7 +1757,7 @@
 
                 <!-- Yarbrough Tennis Center -->
                 <div class="venue-card" data-type="outdoor" data-venue="yarbrough">
-                    <div class="venue-card-header">
+                    <div class="venue-card-header" style="background-image: url('https://auburntigers.com/imgproxy/D7Aub5lqRrwS-gKxmJMXDuuaOtcrkukJgF0adRZcThE/rs:fit:1980:0:0:0/g:ce:0:0/q:90/aHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL2F1YnVybi1wcm9kLzIwMjQvMDgvMDIvaDB2bGh0MXpvY1NhbUZqcXJnZmlQNENtQWtybFF0Q2FpUXJpZGZWdS5qcGc.jpg')">
                         <div class="venue-icon">🎾</div>
                         <div class="venue-capacity">33K sq ft</div>
                     </div>
@@ -1757,7 +1775,7 @@
 
                 <!-- James E. Martin Aquatics Center -->
                 <div class="venue-card" data-type="indoor" data-venue="martin-aquatics">
-                    <div class="venue-card-header">
+                    <div class="venue-card-header" style="background-image: url('https://auburntigers.com/imgproxy/o_6kb5IwAjuYFK9i9oVuTsie8rZ4w9n8iAANkicIlH4/rs:fit:1980:0:0:0/g:ce:0:0/q:90/aHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL2F1YnVybi1wcm9kLzIwMjQvMDUvMjEvMmdiaU5QNFhRWndFZHhGSmtkNTZBcmVsbW9URnMwYm5iekRBVmVHWi5qcGc.jpg')">
                         <div class="venue-icon">🏊</div>
                         <div class="venue-capacity">1,800</div>
                     </div>
@@ -1776,7 +1794,7 @@
 
                 <!-- Hutsell-Rosen Track -->
                 <div class="venue-card" data-type="outdoor" data-venue="hutsell-rosen">
-                    <div class="venue-card-header">
+                    <div class="venue-card-header" style="background-image: url('https://auburntigers.com/imgproxy/ME1g0CPkMf3lrraXxU1G2riuQhadcSV_LdkXAbsHMDo/rs:fit:1980:0:0:0/g:ce:0:0/q:90/aHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL2F1YnVybi1wcm9kLzIwMjUvMTAvMDEvTUhPbHZpMmpmOTBYc2NYT0IzbWZybGpYNXFQRnFLUkVNdUo0czM1Yi5qcGc.jpg')">
                         <div class="venue-icon">🏃</div>
                         <div class="venue-capacity">IAAF Class 1</div>
                     </div>
@@ -1794,7 +1812,7 @@
 
                 <!-- Equestrian Center -->
                 <div class="venue-card" data-type="indoor" data-venue="equestrian">
-                    <div class="venue-card-header">
+                    <div class="venue-card-header" style="background-image: url('https://auburntigers.com/imgproxy/7qP9_tFud1WP2dQLvAMjWUqeZW_Rb3pxz0F5Z5DqmZU/rs:fit:1980:0:0:0/g:ce:0:0/q:90/aHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL2F1YnVybi1wcm9kLzIwMjQvMDUvMjEvTWh1aUdMOFBCR3Q5YlBEZlVpeWdIVHd5c3pnYWN6OGgxblZ3cWRXTC5qcGc.jpg')">
                         <div class="venue-icon">🐴</div>
                         <div class="venue-capacity">80 Acres</div>
                     </div>
