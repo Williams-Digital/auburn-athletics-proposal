@@ -1725,6 +1725,345 @@
         }
 
         /* ========================================
+           PEOPLE TRACKING
+           ======================================== */
+        .tracking-section {
+            background: linear-gradient(180deg, #f8f9fa 0%, #eef1f5 100%);
+        }
+
+        .tracking-hero-banner {
+            background: var(--auburn-navy);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 3rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 320px;
+        }
+
+        .tracking-hero-text {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .tracking-hero-text .drone-badge {
+            align-self: flex-start;
+        }
+
+        .tracking-hero-text h3 {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            margin: 0.75rem 0;
+            line-height: 1.2;
+        }
+
+        .tracking-hero-text p {
+            color: rgba(255,255,255,0.75);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .tracking-hero-visual {
+            background: linear-gradient(135deg, #0C2340 0%, #1a3a5c 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tracking-hero-visual::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(232,119,34,0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 30%, rgba(232,119,34,0.1) 0%, transparent 40%);
+        }
+
+        .tracking-stats-visual {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .tracking-stat-box {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 1.25rem;
+            text-align: center;
+        }
+
+        .tracking-stat-box .stat-val {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--auburn-orange);
+            display: block;
+        }
+
+        .tracking-stat-box .stat-lbl {
+            font-size: 0.65rem;
+            color: rgba(255,255,255,0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-top: 0.25rem;
+            display: block;
+        }
+
+        .tracking-use-cases {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .tracking-use-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 1.75rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            border: 1px solid rgba(12,35,64,0.06);
+            transition: all 0.3s ease;
+        }
+
+        .tracking-use-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+
+        .tracking-use-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--auburn-navy), #1a3a5c);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .tracking-use-card h4 {
+            font-family: var(--font-heading);
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--auburn-navy);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            margin-bottom: 0.5rem;
+        }
+
+        .tracking-use-card p {
+            font-size: 0.82rem;
+            color: var(--gray-600);
+            line-height: 1.6;
+        }
+
+        .tracking-vendors {
+            margin-bottom: 3rem;
+        }
+
+        .tracking-vendors h3 {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--auburn-navy);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .vendor-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .vendor-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            border: 1px solid rgba(12,35,64,0.06);
+            transition: all 0.3s ease;
+        }
+
+        .vendor-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+
+        .vendor-card-header {
+            background: var(--auburn-navy);
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .vendor-card-header h4 {
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .vendor-badge {
+            background: var(--auburn-orange);
+            color: var(--white);
+            font-family: var(--font-heading);
+            font-size: 0.55rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.2rem 0.6rem;
+            border-radius: 3px;
+        }
+
+        .vendor-card-body {
+            padding: 1.5rem;
+        }
+
+        .vendor-card-body p {
+            font-size: 0.82rem;
+            color: var(--gray-600);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .vendor-features {
+            list-style: none;
+            padding: 0;
+        }
+
+        .vendor-features li {
+            font-size: 0.78rem;
+            color: var(--gray-700);
+            padding: 0.35rem 0;
+            border-bottom: 1px solid rgba(12,35,64,0.05);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .vendor-features li::before {
+            content: '✓';
+            color: var(--auburn-orange);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .vendor-deploy {
+            display: inline-block;
+            font-family: var(--font-heading);
+            font-size: 0.6rem;
+            font-weight: 700;
+            color: var(--auburn-navy);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            background: rgba(12,35,64,0.06);
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            margin-top: 0.75rem;
+        }
+
+        .tracking-tiers {
+            background: var(--auburn-navy);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .tracking-tiers h3 {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .tier-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .tier-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .tier-label {
+            font-family: var(--font-heading);
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--auburn-orange);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .tier-venue {
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--white);
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .tier-capacity {
+            font-size: 0.72rem;
+            color: rgba(255,255,255,0.45);
+            display: block;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .tier-stack {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tier-stack li {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.65);
+            padding: 0.3rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .tier-stack li::before {
+            content: '→';
+            color: var(--auburn-orange);
+            font-size: 0.65rem;
+        }
+
+        /* ========================================
            RESPONSIVE
            ======================================== */
         @media (max-width: 1024px) {
@@ -1815,7 +2154,10 @@
             .investment-summary,
             .graffiti-grid,
             .dashboard-layout,
-            .drone-content-grid {
+            .drone-content-grid,
+            .tracking-use-cases,
+            .vendor-grid,
+            .tier-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -1829,6 +2171,22 @@
 
             .drone-hero-content h3 {
                 font-size: 1.4rem;
+            }
+
+            .tracking-hero-banner {
+                grid-template-columns: 1fr;
+            }
+
+            .tracking-hero-visual {
+                min-height: 200px;
+            }
+
+            .tracking-hero-text {
+                padding: 2rem;
+            }
+
+            .tracking-hero-text h3 {
+                font-size: 1.3rem;
             }
 
             .dashboard-features {
@@ -1899,6 +2257,7 @@
                 <li><a href="#focus-areas" class="nav-link">Focus Areas</a></li>
                 <li><a href="#venues" class="nav-link">Venues</a></li>
                 <li><a href="#drone-shows" class="nav-link">Drone Shows</a></li>
+                <li><a href="#people-tracking" class="nav-link">People Tracking</a></li>
                 <li><a href="#investment" class="nav-link">Investment</a></li>
                 <li><a href="#next-steps" class="nav-link">Next Steps</a></li>
                 <li><a href="#next-steps" class="nav-link nav-cta">Get Started</a></li>
@@ -2614,6 +2973,237 @@
                     <span class="sec-school">USC</span>
                 </div>
                 <p style="text-align: center; margin-top: 1rem; font-size: 0.78rem; color: rgba(255,255,255,0.4);">SEC & College Programs Already Running Drone Shows</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PEOPLE TRACKING & COUNTING -->
+    <section id="people-tracking" class="section tracking-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">People Tracking & Counting</h2>
+                <div class="title-accent-line"></div>
+                <p class="section-subtitle">Real-time crowd intelligence across every Auburn venue — smarter operations, better fan experience</p>
+            </div>
+
+            <div class="tracking-hero-banner">
+                <div class="tracking-hero-text">
+                    <span class="drone-badge">Operations Intelligence</span>
+                    <h3>Know Your Crowd in Real Time</h3>
+                    <p>From gate entry to concession lines, restroom waits to concourse flow — AI-powered sensors and analytics give Auburn operations the data to make faster decisions, reduce bottlenecks, and improve the fan experience at every touchpoint.</p>
+                </div>
+                <div class="tracking-hero-visual">
+                    <div class="tracking-stats-visual">
+                        <div class="tracking-stat-box">
+                            <span class="stat-val">30%</span>
+                            <span class="stat-lbl">Shorter Wait Times</span>
+                        </div>
+                        <div class="tracking-stat-box">
+                            <span class="stat-val">25%</span>
+                            <span class="stat-lbl">More F&B Revenue</span>
+                        </div>
+                        <div class="tracking-stat-box">
+                            <span class="stat-val">40%</span>
+                            <span class="stat-lbl">Faster Response</span>
+                        </div>
+                        <div class="tracking-stat-box">
+                            <span class="stat-val">99%</span>
+                            <span class="stat-lbl">Count Accuracy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Use Cases -->
+            <div class="tracking-use-cases">
+                <div class="tracking-use-card">
+                    <div class="tracking-use-icon">🚪</div>
+                    <h4>Gate & Entrance Counting</h4>
+                    <p>Overhead 3D stereo-vision sensors at every gate provide exact entry counts, detect tailgating, and feed real-time gate density to the operations dashboard and fan mobile app for optimized entry flow.</p>
+                </div>
+                <div class="tracking-use-card">
+                    <div class="tracking-use-icon">🏃</div>
+                    <h4>Concourse Flow Monitoring</h4>
+                    <p>AI-powered cameras analyze crowd density, flow direction, and dwell time across concourses. Operations see bottlenecks forming before they become problems. Fans get green/yellow/red indicators via the mobile app.</p>
+                </div>
+                <div class="tracking-use-card">
+                    <div class="tracking-use-icon">🍔</div>
+                    <h4>Concession Wait Times</h4>
+                    <p>Overhead cameras with AI analyze queue length and service rate at every stand. Wait times are displayed on digital signage and pushed to the fan app — redirecting fans to shorter lines and increasing per-capita spending.</p>
+                </div>
+                <div class="tracking-use-card">
+                    <div class="tracking-use-icon">🚻</div>
+                    <h4>Restroom Occupancy</h4>
+                    <p>Throughput sensors, stall occupancy detection, and smart consumable monitoring (soap, paper, supplies). Red/yellow/green indicators on hallway digital signs direct fans to the nearest available facility.</p>
+                </div>
+                <div class="tracking-use-card">
+                    <div class="tracking-use-icon">⭐</div>
+                    <h4>Suite & Premium Occupancy</h4>
+                    <p>Radar-based sensors (no cameras, zero PII) in suites and premium clubs provide anonymous occupancy counts. Validates capacity, supports dynamic premium pricing, and ensures VIP experience quality.</p>
+                </div>
+                <div class="tracking-use-card">
+                    <div class="tracking-use-icon">🅿️</div>
+                    <h4>Parking & Lot Monitoring</h4>
+                    <p>Camera-based virtual zoning counts vehicles by area without physical infrastructure changes. Real-time lot availability on LED signs and the mobile app guides fans to open spots and reduces pre-game congestion.</p>
+                </div>
+            </div>
+
+            <!-- Vendor Recommendations -->
+            <div class="tracking-vendors">
+                <h3>Recommended Technology Partners</h3>
+                <div class="vendor-grid">
+                    <div class="vendor-card">
+                        <div class="vendor-card-header">
+                            <h4>WaitTime</h4>
+                            <span class="vendor-badge">Top Pick — Crowd Intelligence</span>
+                        </div>
+                        <div class="vendor-card-body">
+                            <p>Patented AI platform that processes overhead camera feeds at 24fps to generate real-time crowd density overlays, queue analysis, and wait time estimates across entire venue concourses.</p>
+                            <ul class="vendor-features">
+                                <li>Real-time concourse heat maps & flow visualization</li>
+                                <li>Concession & restroom wait time estimation</li>
+                                <li>Fan-facing mobile app integration (green/yellow/red)</li>
+                                <li>Operations dashboard with historical analytics</li>
+                                <li>Works with existing Axis camera infrastructure</li>
+                            </ul>
+                            <span class="vendor-deploy">Deployed: Ohio State, Alabama, LA Dodgers, Man City</span>
+                        </div>
+                    </div>
+
+                    <div class="vendor-card">
+                        <div class="vendor-card-header">
+                            <h4>Axis P8815-2 3D Counter</h4>
+                            <span class="vendor-badge">Top Pick — Gate Counting</span>
+                        </div>
+                        <div class="vendor-card-body">
+                            <p>Ceiling-mounted 3D stereo-vision sensor combining hardware and software in one device. Uses dual sensors to generate depth maps, distinguishing people from objects with bi-directional counting.</p>
+                            <ul class="vendor-features">
+                                <li>99%+ accuracy with tailgating detection</li>
+                                <li>PoE powered, no license required</li>
+                                <li>Native integration with Genetec Security Center</li>
+                                <li>Link two units for wide entrance coverage</li>
+                                <li>Industry standard across major venues</li>
+                            </ul>
+                            <span class="vendor-deploy">Deployed: Ohio State (100+ cameras), NFL & MLB venues</span>
+                        </div>
+                    </div>
+
+                    <div class="vendor-card">
+                        <div class="vendor-card-header">
+                            <h4>TRAX SmartRestroom</h4>
+                            <span class="vendor-badge">Top Pick — Restrooms</span>
+                        </div>
+                        <div class="vendor-card-body">
+                            <p>Purpose-built venue restroom intelligence platform integrating 45+ sensor types — throughput counters, stall occupancy, smart dispensers, feedback kiosks, and staff tracking beacons.</p>
+                            <ul class="vendor-features">
+                                <li>Real-time occupancy & supply level monitoring</li>
+                                <li>Clean+Inspect staff task management</li>
+                                <li>Digital signage integration for wait indicators</li>
+                                <li>80% operational efficiency improvement</li>
+                                <li>Time-stamped proof-of-service compliance</li>
+                            </ul>
+                            <span class="vendor-deploy">Deployed: Progressive Field (56 facilities monitored)</span>
+                        </div>
+                    </div>
+
+                    <div class="vendor-card">
+                        <div class="vendor-card-header">
+                            <h4>Density (Radar-Based)</h4>
+                            <span class="vendor-badge">Top Pick — Premium Spaces</span>
+                        </div>
+                        <div class="vendor-card-body">
+                            <p>Radar-based (no cameras, zero PII) anonymous people counting. The "Waffle" sensor self-installs in suites; the "Open Area" sensor covers large premium clubs with 2x range of camera alternatives.</p>
+                            <ul class="vendor-features">
+                                <li>Zero visual surveillance — complete privacy</li>
+                                <li>Self-installable across dozens of suites</li>
+                                <li>Real-time cloud dashboard with open API</li>
+                                <li>10 frames/second low-latency data</li>
+                                <li>Ideal for suites, clubs, and lounges</li>
+                            </ul>
+                            <span class="vendor-deploy">Deployed: Fortune 500 campuses, airport lounges</span>
+                        </div>
+                    </div>
+
+                    <div class="vendor-card">
+                        <div class="vendor-card-header">
+                            <h4>Wicket Express Entry</h4>
+                            <span class="vendor-badge">Recommended — Facial Auth</span>
+                        </div>
+                        <div class="vendor-card-body">
+                            <p>Opt-in facial authentication for hands-free express gate entry. Fans upload a selfie, link their ticket, and walk through QuickLane lanes — no phone needed. All biometric data encrypted, never shared.</p>
+                            <ul class="vendor-features">
+                                <li>5M+ total scans and growing</li>
+                                <li>Biometric-certain gate counting (no tailgating)</li>
+                                <li>Traditional ticket scan always available</li>
+                                <li>Expanding into college athletics market</li>
+                                <li>Encrypted biometric data, never sold</li>
+                            </ul>
+                            <span class="vendor-deploy">Deployed: University of Florida, Tampa Bay Bucs</span>
+                        </div>
+                    </div>
+
+                    <div class="vendor-card">
+                        <div class="vendor-card-header">
+                            <h4>Cisco Spaces + Meraki Wi-Fi</h4>
+                            <span class="vendor-badge">Recommended — Heat Maps</span>
+                        </div>
+                        <div class="vendor-card-body">
+                            <p>Turns existing Cisco Meraki Wi-Fi access points into location sensors. Generates venue-wide heat maps from device detection — crowd density, dwell time, path analysis, all without additional hardware.</p>
+                            <ul class="vendor-features">
+                                <li>Zero additional hardware if Meraki is deployed</li>
+                                <li>Venue-wide coverage from existing infrastructure</li>
+                                <li>Playback function to replay event crowd flow</li>
+                                <li>Zone-level occupancy & dwell analytics</li>
+                                <li>Bundled with Meraki MR licensing</li>
+                            </ul>
+                            <span class="vendor-deploy">Deployed: NFL, MLB, Manchester United, college venues</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tiered Deployment -->
+            <div class="tracking-tiers">
+                <h3>Recommended Deployment by Venue Tier</h3>
+                <div class="tier-grid">
+                    <div class="tier-card">
+                        <span class="tier-label">Tier 1 — Full Stack</span>
+                        <span class="tier-venue">Jordan-Hare Stadium</span>
+                        <span class="tier-capacity">Football — 88,043 capacity</span>
+                        <ul class="tier-stack">
+                            <li>Wicket Express Entry + Axis gate counters</li>
+                            <li>WaitTime AI (concourse + concessions)</li>
+                            <li>TRAX SmartRestroom (all facilities)</li>
+                            <li>Density suite/premium occupancy</li>
+                            <li>EnSight parking guidance</li>
+                            <li>Cisco Spaces venue-wide heat maps</li>
+                            <li>Fan-facing mobile app integration</li>
+                        </ul>
+                    </div>
+                    <div class="tier-card">
+                        <span class="tier-label">Tier 2 — Core Analytics</span>
+                        <span class="tier-venue">Neville Arena & Plainsman Park</span>
+                        <span class="tier-capacity">Basketball/Baseball — 7K-9K capacity</span>
+                        <ul class="tier-stack">
+                            <li>Axis P8815-2 gate counting</li>
+                            <li>WaitTime concession wait times</li>
+                            <li>TRAX SmartRestroom</li>
+                            <li>Density Waffle for suites</li>
+                            <li>Shared mobile app integration</li>
+                        </ul>
+                    </div>
+                    <div class="tier-card">
+                        <span class="tier-label">Tier 3 — Smart Essentials</span>
+                        <span class="tier-venue">Moore Field, Soccer, Tennis & More</span>
+                        <span class="tier-capacity">Smaller venues — 1.5K-2.9K capacity</span>
+                        <ul class="tier-stack">
+                            <li>V-Count or FootfallCam gate sensors</li>
+                            <li>Basic occupancy tracking</li>
+                            <li>Shared campus-wide mobile app</li>
+                            <li>Scalable to Tier 2 as needed</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
