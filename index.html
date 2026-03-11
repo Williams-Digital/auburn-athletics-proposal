@@ -1401,35 +1401,35 @@
         }
 
         .graffiti-card-visual {
-            height: 140px;
+            height: 180px;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
             overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.5s ease;
+        }
+
+        .graffiti-card:hover .graffiti-card-visual {
+            transform: scale(1.05);
         }
 
         .graffiti-card-visual .graffiti-emoji {
-            font-size: 3.5rem;
+            font-size: 3rem;
             position: relative;
             z-index: 2;
+            filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
         }
 
         .graffiti-card-visual::after {
             content: '';
             position: absolute;
             inset: 0;
-            opacity: 0.08;
+            background: linear-gradient(180deg, rgba(12,35,64,0.2) 0%, rgba(12,35,64,0.6) 100%);
+            z-index: 1;
         }
-
-        .graffiti-card:nth-child(1) .graffiti-card-visual { background: linear-gradient(135deg, #0C2340 0%, #1a3a5c 100%); }
-        .graffiti-card:nth-child(2) .graffiti-card-visual { background: linear-gradient(135deg, #E87722 0%, #c45f0a 100%); }
-        .graffiti-card:nth-child(3) .graffiti-card-visual { background: linear-gradient(135deg, #1a3a5c 0%, #0C2340 100%); }
-        .graffiti-card:nth-child(4) .graffiti-card-visual { background: linear-gradient(135deg, #c45f0a 0%, #E87722 100%); }
-        .graffiti-card:nth-child(5) .graffiti-card-visual { background: linear-gradient(135deg, #0C2340 0%, #2a4a6c 100%); }
-        .graffiti-card:nth-child(6) .graffiti-card-visual { background: linear-gradient(135deg, #E87722 0%, #ff8c3a 100%); }
-        .graffiti-card:nth-child(7) .graffiti-card-visual { background: linear-gradient(135deg, #334155 0%, #1e293b 100%); }
-        .graffiti-card:nth-child(8) .graffiti-card-visual { background: linear-gradient(135deg, #1a3a5c 0%, #0C2340 100%); }
 
         .graffiti-card-body {
             padding: 1.25rem 1.25rem 1.5rem;
@@ -1460,6 +1460,268 @@
             text-transform: uppercase;
             letter-spacing: 0.12em;
             margin-top: 0.75rem;
+        }
+
+        /* ========================================
+           DRONE SHOWS
+           ======================================== */
+        .drone-section {
+            background: linear-gradient(180deg, #050e1a 0%, #0C2340 50%, #050e1a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .drone-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(232,119,34,0.08) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .drone-hero {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 3rem;
+            height: 400px;
+            background-image: url('https://images.unsplash.com/photo-1708028382575-5281d2d3d597?w=1400&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .drone-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 30%, rgba(5,14,26,0.9) 100%);
+        }
+
+        .drone-hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 2.5rem;
+            width: 100%;
+        }
+
+        .drone-hero-content h3 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            margin-bottom: 0.5rem;
+        }
+
+        .drone-hero-content p {
+            color: rgba(255,255,255,0.8);
+            font-size: 1.05rem;
+            max-width: 700px;
+            line-height: 1.6;
+        }
+
+        .drone-badge {
+            display: inline-block;
+            background: var(--auburn-orange);
+            color: var(--white);
+            font-family: var(--font-heading);
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            margin-bottom: 0.75rem;
+        }
+
+        .drone-content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .drone-info-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .drone-info-card h4 {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--auburn-orange);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .drone-info-card p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .drone-info-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .drone-info-card ul li {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.88rem;
+            padding: 0.4rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .drone-info-card ul li::before {
+            content: '✦';
+            color: var(--auburn-orange);
+            font-size: 0.7rem;
+        }
+
+        .drone-venues-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .drone-venue-tag {
+            background: rgba(232,119,34,0.1);
+            border: 1px solid rgba(232,119,34,0.25);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            text-align: center;
+            color: var(--white);
+            font-family: var(--font-heading);
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            transition: all 0.3s ease;
+        }
+
+        .drone-venue-tag:hover {
+            background: rgba(232,119,34,0.2);
+            border-color: var(--auburn-orange);
+            transform: translateY(-2px);
+        }
+
+        .drone-venue-tag span {
+            display: block;
+            font-family: var(--font-body);
+            font-size: 0.68rem;
+            font-weight: 400;
+            text-transform: none;
+            color: rgba(255,255,255,0.5);
+            margin-top: 0.2rem;
+        }
+
+        .drone-video-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .drone-video-card {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .drone-video-card:hover {
+            transform: scale(1.03);
+        }
+
+        .drone-video-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .drone-video-card::after {
+            content: '▶';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(232,119,34,0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            padding-left: 3px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+
+        .drone-video-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            z-index: 2;
+        }
+
+        .drone-video-label p {
+            color: var(--white);
+            font-family: var(--font-heading);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .drone-sec-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.03);
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .sec-school {
+            font-family: var(--font-heading);
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .sec-school:hover {
+            color: var(--auburn-orange);
+            border-color: rgba(232,119,34,0.3);
         }
 
         /* ========================================
@@ -1552,8 +1814,21 @@
             .approach-grid,
             .investment-summary,
             .graffiti-grid,
-            .dashboard-layout {
+            .dashboard-layout,
+            .drone-content-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .drone-video-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .drone-hero {
+                height: 280px;
+            }
+
+            .drone-hero-content h3 {
+                font-size: 1.4rem;
             }
 
             .dashboard-features {
@@ -1623,6 +1898,7 @@
                 <li><a href="#dashboard" class="nav-link">Dashboard</a></li>
                 <li><a href="#focus-areas" class="nav-link">Focus Areas</a></li>
                 <li><a href="#venues" class="nav-link">Venues</a></li>
+                <li><a href="#drone-shows" class="nav-link">Drone Shows</a></li>
                 <li><a href="#investment" class="nav-link">Investment</a></li>
                 <li><a href="#next-steps" class="nav-link">Next Steps</a></li>
                 <li><a href="#next-steps" class="nav-link nav-cta">Get Started</a></li>
@@ -1935,7 +2211,7 @@
             <div class="graffiti-grid">
 
                 <div class="graffiti-card">
-                    <div class="graffiti-card-visual">
+                    <div class="graffiti-card-visual" style="background-image: url('https://snworksceo.imgix.net/atp/f33bd7f7-288e-4740-bc46-9ba3dbcfb0a4.sized-1000x1000.jpg')">
                         <span class="graffiti-emoji">🏛️</span>
                     </div>
                     <div class="graffiti-card-body">
@@ -1946,7 +2222,7 @@
                 </div>
 
                 <div class="graffiti-card">
-                    <div class="graffiti-card-visual">
+                    <div class="graffiti-card-visual" style="background-image: url('https://snworksceo.imgix.net/atp/14084962-bc1b-4ea4-955b-d54c4ae32b5c.sized-1000x1000.jpg')">
                         <span class="graffiti-emoji">🏆</span>
                     </div>
                     <div class="graffiti-card-body">
@@ -1957,7 +2233,7 @@
                 </div>
 
                 <div class="graffiti-card">
-                    <div class="graffiti-card-visual">
+                    <div class="graffiti-card-visual" style="background-image: url('https://images.unsplash.com/photo-1560439124-500b186b9837?w=800&q=80')">
                         <span class="graffiti-emoji">🎨</span>
                     </div>
                     <div class="graffiti-card-body">
@@ -1968,7 +2244,7 @@
                 </div>
 
                 <div class="graffiti-card">
-                    <div class="graffiti-card-visual">
+                    <div class="graffiti-card-visual" style="background-image: url('https://snworksceo.imgix.net/atp/f6d8d9e9-2c06-4e35-96d8-c23fc8fa8ec4.sized-1000x1000.jpg')">
                         <span class="graffiti-emoji">🦅</span>
                     </div>
                     <div class="graffiti-card-body">
@@ -1979,7 +2255,7 @@
                 </div>
 
                 <div class="graffiti-card">
-                    <div class="graffiti-card-visual">
+                    <div class="graffiti-card-visual" style="background-image: url('https://images.unsplash.com/photo-1582985043002-751d768ded08?w=800&q=80')">
                         <span class="graffiti-emoji">⭐</span>
                     </div>
                     <div class="graffiti-card-body">
@@ -1990,7 +2266,7 @@
                 </div>
 
                 <div class="graffiti-card">
-                    <div class="graffiti-card-visual">
+                    <div class="graffiti-card-visual" style="background-image: url('https://images.unsplash.com/photo-1569880153113-76e33fc52d5f?w=800&q=80')">
                         <span class="graffiti-emoji">🏅</span>
                     </div>
                     <div class="graffiti-card-body">
@@ -2001,7 +2277,7 @@
                 </div>
 
                 <div class="graffiti-card">
-                    <div class="graffiti-card-visual">
+                    <div class="graffiti-card-visual" style="background-image: url('https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800&q=80')">
                         <span class="graffiti-emoji">📱</span>
                     </div>
                     <div class="graffiti-card-body">
@@ -2012,7 +2288,7 @@
                 </div>
 
                 <div class="graffiti-card">
-                    <div class="graffiti-card-visual">
+                    <div class="graffiti-card-visual" style="background-image: url('https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=800&q=80')">
                         <span class="graffiti-emoji">🎓</span>
                     </div>
                     <div class="graffiti-card-body">
@@ -2238,6 +2514,106 @@
                     </div>
                 </div>
 
+            </div>
+        </div>
+    </section>
+
+    <!-- DRONE SHOWS -->
+    <section id="drone-shows" class="section drone-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" style="color: var(--white);">Drone Light Shows</h2>
+                <div class="title-accent-line"></div>
+                <p class="section-subtitle" style="color: rgba(255,255,255,0.65);">Elevate the gameday atmosphere with stunning aerial drone formations over Auburn's outdoor venues</p>
+            </div>
+
+            <div class="drone-hero">
+                <div class="drone-hero-content">
+                    <span class="drone-badge">Gameday Spectacle</span>
+                    <h3>Light Up the Auburn Sky</h3>
+                    <p>Hundreds of synchronized drones forming Auburn logos, mascots, and traditions in the night sky above your venue. From pre-game hype to halftime spectacles, drone shows create unforgettable moments that fans share worldwide.</p>
+                </div>
+            </div>
+
+            <div class="drone-content-grid">
+                <div class="drone-info-card">
+                    <h4>Show Concepts for Auburn</h4>
+                    <ul>
+                        <li>War Eagle formation with full wingspan over Jordan-Hare</li>
+                        <li>Aubie mascot animated in the sky</li>
+                        <li>Interlocking AU logo with pyrotechnic accents</li>
+                        <li>"Bodda Getta" text formation during 4th quarter</li>
+                        <li>Toomer's Corner oak tree with rolling confetti effect</li>
+                        <li>Opponent matchup graphics & SEC logo reveals</li>
+                        <li>National championship & conference trophy celebrations</li>
+                        <li>Senior Night personalized player number formations</li>
+                    </ul>
+                </div>
+
+                <div class="drone-info-card">
+                    <h4>Why Drone Shows?</h4>
+                    <p>Drone light shows have rapidly become the must-have spectacle across SEC athletics. They create viral social media moments, enhance the fan experience, and position Auburn at the forefront of gameday innovation.</p>
+                    <ul style="margin-top: 1rem;">
+                        <li>300-500 drones per show, fully FAA-compliant</li>
+                        <li>Custom choreography to Auburn fight songs</li>
+                        <li>Pyrotechnic integration for maximum impact</li>
+                        <li>Perfect for Football, Baseball, Soccer & Track events</li>
+                        <li>Content captured for War Eagle+ streaming & social</li>
+                        <li>Sponsorship & branding integration opportunities</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="drone-info-card" style="margin-bottom: 2rem;">
+                <h4>Outdoor Venues for Drone Shows</h4>
+                <p style="margin-bottom: 1rem;">Drone light shows can be deployed at any of Auburn's outdoor venues for marquee events, rivalry games, senior nights, and special celebrations.</p>
+                <div class="drone-venues-grid">
+                    <div class="drone-venue-tag">Jordan-Hare Stadium<span>Football | 88,043</span></div>
+                    <div class="drone-venue-tag">Plainsman Park<span>Baseball | 7,189</span></div>
+                    <div class="drone-venue-tag">Jane B. Moore Field<span>Softball | 2,900</span></div>
+                    <div class="drone-venue-tag">Auburn Soccer Complex<span>Soccer | 1,500</span></div>
+                    <div class="drone-venue-tag">Yarbrough Tennis Center<span>Tennis</span></div>
+                    <div class="drone-venue-tag">Hutsell-Rosen Track<span>Track & Field</span></div>
+                    <div class="drone-venue-tag">Auburn Equestrian Center<span>Equestrian</span></div>
+                </div>
+            </div>
+
+            <div class="drone-info-card">
+                <h4>Example Drone Shows at SEC & College Venues</h4>
+                <p style="margin-bottom: 0.75rem;">Top programs across the SEC and college athletics have already embraced drone shows as a gameday staple:</p>
+                <div class="drone-video-grid">
+                    <a href="https://www.youtube.com/watch?v=HOTFDNrUt7g" target="_blank" rel="noopener" class="drone-video-card" style="text-decoration: none;">
+                        <img src="https://img.youtube.com/vi/HOTFDNrUt7g/maxresdefault.jpg" alt="Mizzou Drone Show" loading="lazy">
+                        <div class="drone-video-label">
+                            <p>Missouri — Halftime Drone Show</p>
+                        </div>
+                    </a>
+                    <a href="https://www.youtube.com/watch?v=tE6I0bZND9w" target="_blank" rel="noopener" class="drone-video-card" style="text-decoration: none;">
+                        <img src="https://img.youtube.com/vi/tE6I0bZND9w/maxresdefault.jpg" alt="USC Drone Show" loading="lazy">
+                        <div class="drone-video-label">
+                            <p>USC — Halftime Drone Show</p>
+                        </div>
+                    </a>
+                    <a href="https://www.youtube.com/watch?v=ZOpgSpmHbRw" target="_blank" rel="noopener" class="drone-video-card" style="text-decoration: none;">
+                        <img src="https://img.youtube.com/vi/ZOpgSpmHbRw/maxresdefault.jpg" alt="Super Bowl Drone Show" loading="lazy">
+                        <div class="drone-video-label">
+                            <p>Super Bowl LVIII — 1,000 Drones</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="drone-sec-bar">
+                    <span class="sec-school">LSU</span>
+                    <span class="sec-school">Tennessee</span>
+                    <span class="sec-school">Alabama</span>
+                    <span class="sec-school">Oklahoma</span>
+                    <span class="sec-school">Texas</span>
+                    <span class="sec-school">Missouri</span>
+                    <span class="sec-school">South Carolina</span>
+                    <span class="sec-school">Clemson</span>
+                    <span class="sec-school">Ohio State</span>
+                    <span class="sec-school">USC</span>
+                </div>
+                <p style="text-align: center; margin-top: 1rem; font-size: 0.78rem; color: rgba(255,255,255,0.4);">SEC & College Programs Already Running Drone Shows</p>
             </div>
         </div>
     </section>
