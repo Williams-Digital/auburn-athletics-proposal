@@ -1,0 +1,2009 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auburn Athletics Technology Proposal | Transforming Every Venue</title>
+    <meta name="description" content="Comprehensive technology improvement proposal across all Auburn University Athletics venues - distributed tech, atmosphere, monitoring, engagement, and mobile experience.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ========================================
+           CSS RESET & VARIABLES
+           ======================================== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --auburn-navy: #0C2340;
+            --auburn-navy-light: #1a3a5c;
+            --auburn-navy-dark: #081829;
+            --auburn-orange: #E87722;
+            --auburn-orange-light: #ff8c3a;
+            --auburn-orange-dark: #c45f0a;
+            --white: #ffffff;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-400: #94a3b8;
+            --gray-500: #64748b;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+            --gray-900: #0f172a;
+            --font-heading: 'Oswald', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.12);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.18);
+            --transition-fast: 0.2s ease;
+            --transition-normal: 0.3s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--gray-800);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: var(--white);
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* ========================================
+           NAVIGATION
+           ======================================== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all var(--transition-normal);
+            background: transparent;
+        }
+
+        .navbar.scrolled {
+            background: rgba(12, 35, 64, 0.97);
+            backdrop-filter: blur(12px);
+            padding: 0.6rem 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .logo-text {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 0.08em;
+        }
+
+        .logo-subtext {
+            font-family: var(--font-body);
+            font-size: 0.65rem;
+            color: var(--auburn-orange);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 600;
+            display: block;
+            margin-top: -2px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 0.25rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 0.5rem 1rem;
+            position: relative;
+            transition: color var(--transition-fast);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--auburn-orange);
+            transition: width var(--transition-normal);
+        }
+
+        .nav-link:hover {
+            color: var(--white);
+        }
+
+        .nav-link:hover::after {
+            width: 70%;
+        }
+
+        .nav-cta {
+            background: var(--auburn-orange);
+            color: var(--white) !important;
+            border-radius: 6px;
+            padding: 0.5rem 1.25rem;
+            margin-left: 0.5rem;
+            transition: background var(--transition-fast), transform var(--transition-fast);
+        }
+
+        .nav-cta::after { display: none; }
+
+        .nav-cta:hover {
+            background: var(--auburn-orange-light);
+            transform: translateY(-1px);
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .hamburger,
+        .hamburger::before,
+        .hamburger::after {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+            transition: all var(--transition-normal);
+        }
+
+        .hamburger {
+            position: relative;
+        }
+
+        .hamburger::before,
+        .hamburger::after {
+            content: '';
+            position: absolute;
+            left: 0;
+        }
+
+        .hamburger::before { top: -7px; }
+        .hamburger::after { top: 7px; }
+
+        .nav-toggle.active .hamburger {
+            background: transparent;
+        }
+
+        .nav-toggle.active .hamburger::before {
+            transform: rotate(45deg);
+            top: 0;
+        }
+
+        .nav-toggle.active .hamburger::after {
+            transform: rotate(-45deg);
+            top: 0;
+        }
+
+        /* ========================================
+           HERO SECTION
+           ======================================== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: var(--auburn-navy-dark);
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://auburntigers.com/images/2023/8/21/JHS_Sunset_8_19_23__5_.jpg') center/cover no-repeat;
+            opacity: 0.35;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                160deg,
+                rgba(12, 35, 64, 0.95) 0%,
+                rgba(12, 35, 64, 0.85) 40%,
+                rgba(12, 35, 64, 0.75) 70%,
+                rgba(232, 119, 34, 0.25) 100%
+            );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+            max-width: 900px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            font-family: var(--font-heading);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            color: var(--auburn-orange);
+            border: 1px solid rgba(232, 119, 34, 0.4);
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+        }
+
+        .hero-title {
+            font-family: var(--font-heading);
+            color: var(--white);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .title-line {
+            display: block;
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+
+        .title-accent {
+            display: block;
+            font-size: 2rem;
+            font-weight: 500;
+            color: var(--auburn-orange);
+            margin-top: 0.5rem;
+            text-shadow: 0 0 40px rgba(232, 119, 34, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.75);
+            max-width: 650px;
+            margin: 0 auto 3rem;
+            line-height: 1.7;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            display: block;
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--auburn-orange);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            text-align: center;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        .scroll-arrow {
+            width: 20px;
+            height: 20px;
+            border-right: 2px solid rgba(255,255,255,0.4);
+            border-bottom: 2px solid rgba(255,255,255,0.4);
+            transform: rotate(45deg);
+            margin: 0.75rem auto 0;
+            animation: bounceArrow 2s infinite;
+        }
+
+        @keyframes bounceArrow {
+            0%, 100% { transform: rotate(45deg) translateY(0); opacity: 0.4; }
+            50% { transform: rotate(45deg) translateY(6px); opacity: 1; }
+        }
+
+        /* ========================================
+           SECTION COMMON STYLES
+           ======================================== */
+        .section {
+            padding: 6rem 0;
+        }
+
+        .section-dark {
+            background: var(--auburn-navy);
+            color: var(--white);
+        }
+
+        .section-alt {
+            background: var(--gray-50);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--auburn-navy);
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+        }
+
+        .section-dark .section-title {
+            color: var(--white);
+        }
+
+        .title-accent-line {
+            width: 60px;
+            height: 4px;
+            background: var(--auburn-orange);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: var(--gray-500);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .section-dark .section-subtitle {
+            color: rgba(255,255,255,0.65);
+        }
+
+        /* ========================================
+           FOCUS AREAS SECTION
+           ======================================== */
+        .focus-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .focus-card {
+            position: relative;
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2.5rem 2rem 2rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-200);
+            transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .focus-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--auburn-orange);
+            transform: scaleX(0);
+            transition: transform var(--transition-normal);
+        }
+
+        .focus-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .focus-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .focus-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease, transform 0.6s ease, box-shadow var(--transition-normal);
+        }
+
+        .focus-number {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-family: var(--font-heading);
+            font-size: 4rem;
+            font-weight: 700;
+            color: rgba(12, 35, 64, 0.06);
+            line-height: 1;
+        }
+
+        .focus-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--auburn-orange), var(--auburn-orange-dark));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+        }
+
+        .focus-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: var(--white);
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .focus-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--auburn-navy);
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+
+        .focus-card p {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .focus-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .focus-features li {
+            font-size: 0.82rem;
+            color: var(--gray-700);
+            padding: 0.3rem 0;
+            padding-left: 1.25rem;
+            position: relative;
+        }
+
+        .focus-features li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.65rem;
+            width: 6px;
+            height: 6px;
+            background: var(--auburn-orange);
+            border-radius: 50%;
+        }
+
+        .focus-card.featured {
+            background: linear-gradient(135deg, var(--auburn-navy), var(--auburn-navy-light));
+            border-color: transparent;
+        }
+
+        .focus-card.featured h3,
+        .focus-card.featured p,
+        .focus-card.featured .focus-features li {
+            color: rgba(255,255,255,0.9);
+        }
+
+        .focus-card.featured .focus-number {
+            color: rgba(255,255,255,0.08);
+        }
+
+        .focus-card.featured::before {
+            background: var(--auburn-orange-light);
+        }
+
+        /* ========================================
+           VENUES SECTION
+           ======================================== */
+        .venue-filters {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            font-family: var(--font-heading);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 0.6rem 1.5rem;
+            border: 2px solid var(--gray-200);
+            border-radius: 30px;
+            background: var(--white);
+            color: var(--gray-600);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .filter-btn:hover {
+            border-color: var(--auburn-navy);
+            color: var(--auburn-navy);
+        }
+
+        .filter-btn.active {
+            background: var(--auburn-navy);
+            border-color: var(--auburn-navy);
+            color: var(--white);
+        }
+
+        .venues-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .venue-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-200);
+            transition: transform var(--transition-normal), box-shadow var(--transition-normal), opacity var(--transition-normal);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .venue-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease, transform 0.6s ease, box-shadow var(--transition-normal);
+        }
+
+        .venue-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .venue-card-header {
+            background: linear-gradient(135deg, var(--auburn-navy), var(--auburn-navy-light));
+            padding: 1.5rem 1.5rem 1.25rem;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+
+        .venue-icon {
+            font-size: 2.5rem;
+            line-height: 1;
+        }
+
+        .venue-capacity {
+            font-family: var(--font-heading);
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--auburn-orange);
+            background: rgba(232, 119, 34, 0.15);
+            padding: 0.3rem 0.75rem;
+            border-radius: 20px;
+            letter-spacing: 0.03em;
+        }
+
+        .venue-card-body {
+            padding: 1.5rem;
+        }
+
+        .venue-card-body h3 {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--auburn-navy);
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            margin-bottom: 0.25rem;
+        }
+
+        .venue-sport {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--auburn-orange);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.75rem;
+        }
+
+        .venue-tagline {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .venue-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+        }
+
+        .venue-tag {
+            display: inline-block;
+            background: var(--gray-100);
+            color: var(--auburn-navy);
+            padding: 0.25rem 0.65rem;
+            border-radius: 20px;
+            font-family: var(--font-heading);
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Featured venue (Jordan-Hare) */
+        .venue-featured {
+            grid-column: span 2;
+        }
+
+        .venue-featured .venue-card-header {
+            background: linear-gradient(135deg, var(--auburn-navy-dark), var(--auburn-navy), var(--auburn-navy-light));
+            padding: 2rem 2rem 1.75rem;
+        }
+
+        .venue-featured .venue-icon {
+            font-size: 3rem;
+        }
+
+        .venue-featured .venue-card-body {
+            padding: 2rem;
+        }
+
+        .venue-featured .venue-card-body h3 {
+            font-size: 1.4rem;
+        }
+
+        .venue-featured .venue-tagline {
+            font-size: 0.95rem;
+        }
+
+        /* ========================================
+           INVESTMENT SECTION
+           ======================================== */
+        .approach-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .approach-card {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .approach-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .approach-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--auburn-orange);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            margin-bottom: 0.75rem;
+        }
+
+        .approach-card p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.7;
+        }
+
+        .investment-summary {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .summary-card {
+            text-align: center;
+            padding: 2rem;
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 12px;
+            background: rgba(255,255,255,0.04);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .summary-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .summary-card h4 {
+            font-family: var(--font-heading);
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.5rem;
+        }
+
+        .summary-amount {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+
+        .summary-card p {
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* ========================================
+           NEXT STEPS SECTION
+           ======================================== */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .step-card {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .step-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .step-number {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--auburn-orange), var(--auburn-orange-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            margin: 0 auto 1.25rem;
+        }
+
+        .step-card h4 {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--auburn-navy);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-card p {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            line-height: 1.6;
+        }
+
+        /* ========================================
+           FOOTER
+           ======================================== */
+        .footer {
+            background: var(--auburn-navy-dark);
+            padding: 3rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer .logo-text {
+            font-size: 1.25rem;
+        }
+
+        .footer .logo-subtext {
+            font-size: 0.6rem;
+            margin-top: 0.25rem;
+            display: block;
+        }
+
+        .footer-copy {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.35);
+            margin-top: 1rem;
+        }
+
+        .war-eagle-text {
+            font-family: var(--font-heading);
+            font-size: 6rem;
+            font-weight: 700;
+            color: rgba(255,255,255,0.03);
+            position: absolute;
+            bottom: -0.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            letter-spacing: 0.15em;
+            user-select: none;
+        }
+
+        /* ========================================
+           MODAL
+           ======================================== */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(12, 35, 64, 0.85);
+            backdrop-filter: blur(4px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity var(--transition-normal);
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal {
+            background: var(--white);
+            border-radius: 16px;
+            max-width: 680px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-lg);
+            transform: scale(0.95);
+            transition: transform var(--transition-normal);
+        }
+
+        .modal-overlay.active .modal {
+            transform: scale(1);
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--auburn-navy), var(--auburn-navy-light));
+            padding: 2rem 2rem 1.5rem;
+            border-radius: 16px 16px 0 0;
+            position: relative;
+        }
+
+        .modal-header h2 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+
+        .modal-header p {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.65);
+            margin-top: 0.5rem;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: var(--white);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 1.25rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background var(--transition-fast);
+        }
+
+        .modal-close:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .modal-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-stat {
+            text-align: center;
+            padding: 1rem;
+            background: var(--gray-50);
+            border-radius: 8px;
+        }
+
+        .modal-stat-value {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--auburn-navy);
+        }
+
+        .modal-stat-label {
+            font-size: 0.7rem;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 600;
+        }
+
+        .modal-section h3 {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--auburn-navy);
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .modal-section p {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            line-height: 1.7;
+        }
+
+        .modal-section ul {
+            list-style: none;
+            margin: 0.5rem 0;
+        }
+
+        .modal-section ul li {
+            font-size: 0.85rem;
+            color: var(--gray-700);
+            padding: 0.35rem 0 0.35rem 1.25rem;
+            position: relative;
+        }
+
+        .modal-section ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.7rem;
+            width: 6px;
+            height: 6px;
+            background: var(--auburn-orange);
+            border-radius: 50%;
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+        @media (max-width: 1024px) {
+            .focus-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .venues-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .venue-featured {
+                grid-column: span 2;
+            }
+
+            .approach-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .steps-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(12, 35, 64, 0.98);
+                backdrop-filter: blur(12px);
+                flex-direction: column;
+                padding: 1rem 2rem 2rem;
+                gap: 0.25rem;
+                display: none;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .nav-cta {
+                margin-left: 0;
+                margin-top: 0.5rem;
+                text-align: center;
+            }
+
+            .title-line {
+                font-size: 2.25rem;
+            }
+
+            .title-accent {
+                font-size: 1.4rem;
+            }
+
+            .hero-stats {
+                gap: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .section {
+                padding: 4rem 0;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .focus-grid,
+            .venues-grid,
+            .approach-grid,
+            .investment-summary {
+                grid-template-columns: 1fr;
+            }
+
+            .venue-featured {
+                grid-column: span 1;
+            }
+
+            .steps-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .modal-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1.25rem;
+            }
+
+            .title-line {
+                font-size: 1.85rem;
+            }
+
+            .title-accent {
+                font-size: 1.2rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">
+                <div>
+                    <span class="logo-text">AUBURN</span>
+                    <span class="logo-subtext">Athletics Technology</span>
+                </div>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#focus-areas" class="nav-link">Focus Areas</a></li>
+                <li><a href="#venues" class="nav-link">Venues</a></li>
+                <li><a href="#investment" class="nav-link">Investment</a></li>
+                <li><a href="#next-steps" class="nav-link">Next Steps</a></li>
+                <li><a href="#next-steps" class="nav-link nav-cta">Get Started</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header id="hero" class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-badge">Athletics Technology Proposal 2026</div>
+            <h1 class="hero-title">
+                <span class="title-line">Transforming Auburn Athletics</span>
+                <span class="title-accent">One Detail at a Time</span>
+            </h1>
+            <p class="hero-subtitle">Smart, scalable technology improvements across every Auburn Athletics venue. Not the big screens — the details that elevate the entire experience.</p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number" data-target="10">0</span>
+                    <span class="stat-label">Venues</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" data-target="109" data-suffix="K+">0</span>
+                    <span class="stat-label">Total Capacity</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" data-target="6">0</span>
+                    <span class="stat-label">Focus Areas</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" data-target="12">0</span>
+                    <span class="stat-label">Sports</span>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll to Explore</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </header>
+
+    <!-- FOCUS AREAS -->
+    <section id="focus-areas" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">6 Focus Areas</h2>
+                <div class="title-accent-line"></div>
+                <p class="section-subtitle">Smart, scalable technology improvements applied across every Auburn Athletics venue</p>
+            </div>
+            <div class="focus-grid">
+
+                <!-- 01 Common Spaces -->
+                <div class="focus-card" data-area="common-spaces">
+                    <div class="focus-number">01</div>
+                    <div class="focus-icon">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    </div>
+                    <h3>Common Spaces & Distributed Tech</h3>
+                    <p>Screens in every concourse, lobby, and hallway delivering live feeds, replays, scores, and campus information.</p>
+                    <ul class="focus-features">
+                        <li>Cable / IPTV Distribution</li>
+                        <li>Digital Menu Boards</li>
+                        <li>Informational Displays</li>
+                        <li>Live Game Feeds & Replays</li>
+                        <li>Broadcast Monitoring</li>
+                    </ul>
+                </div>
+
+                <!-- 02 Atmosphere (Featured) -->
+                <div class="focus-card featured" data-area="atmosphere">
+                    <div class="focus-number">02</div>
+                    <div class="focus-icon">
+                        <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    </div>
+                    <h3>Atmosphere</h3>
+                    <p>The energy that makes Auburn gameday unforgettable. LED accents, coordinated lighting, curated audio zones, and entrance hype moments.</p>
+                    <ul class="focus-features">
+                        <li>LED Accent Lighting</li>
+                        <li>Tunnel & Entrance Effects</li>
+                        <li>Coordinated Crowd Lighting</li>
+                        <li>Curated Audio Zones</li>
+                        <li>Between-Play Hype Moments</li>
+                    </ul>
+                </div>
+
+                <!-- 03 People Monitoring -->
+                <div class="focus-card" data-area="people-monitoring">
+                    <div class="focus-number">03</div>
+                    <div class="focus-icon">
+                        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <h3>People Monitoring</h3>
+                    <p>Real-time data on crowd density, flow patterns, and wait times — helping operations make smarter decisions faster.</p>
+                    <ul class="focus-features">
+                        <li>Occupancy Sensors</li>
+                        <li>Crowd Flow Heat Maps</li>
+                        <li>Concession & Restroom Wait Times</li>
+                        <li>Gate Density Alerts</li>
+                        <li>Entry / Exit Analytics</li>
+                    </ul>
+                </div>
+
+                <!-- 04 Fan Engagement -->
+                <div class="focus-card" data-area="fan-engagement">
+                    <div class="focus-number">04</div>
+                    <div class="focus-icon">
+                        <svg viewBox="0 0 24 24"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+                    </div>
+                    <h3>Fan Engagement</h3>
+                    <p>Turn passive spectators into active participants with interactive experiences on their own devices and throughout the venue.</p>
+                    <ul class="focus-features">
+                        <li>In-Seat Polls & Trivia</li>
+                        <li>Social Media Walls</li>
+                        <li>AR Filters & Photo Moments</li>
+                        <li>Gamification & Loyalty Points</li>
+                        <li>Sponsor Activations</li>
+                    </ul>
+                </div>
+
+                <!-- 05 Fan Zone & Premium -->
+                <div class="focus-card" data-area="fan-zone">
+                    <div class="focus-number">05</div>
+                    <div class="focus-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                    </div>
+                    <h3>Fan Zone & Premium Spaces</h3>
+                    <p>Elevated hospitality and tailgate experiences powered by production-quality AV and premium technology throughout.</p>
+                    <ul class="focus-features">
+                        <li>Outdoor Stage Production</li>
+                        <li>Premium Hospitality Tech</li>
+                        <li>VIP Streaming & Displays</li>
+                        <li>Branded Tailgate Setups</li>
+                        <li>Sponsor Integration Points</li>
+                    </ul>
+                </div>
+
+                <!-- 06 Mobile Experience -->
+                <div class="focus-card" data-area="mobile">
+                    <div class="focus-number">06</div>
+                    <div class="focus-icon">
+                        <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                    </div>
+                    <h3>Mobile Experience</h3>
+                    <p>Everything fans need in their pocket — from finding their seat to ordering food to getting real-time updates on every sport.</p>
+                    <ul class="focus-features">
+                        <li>Indoor Wayfinding</li>
+                        <li>Mobile Food & Merch Ordering</li>
+                        <li>Digital Ticketing</li>
+                        <li>Personalized Push Notifications</li>
+                        <li>Parking Guidance</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- VENUES -->
+    <section id="venues" class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">10 Auburn Venues</h2>
+                <div class="title-accent-line"></div>
+                <p class="section-subtitle">Technology improvements tailored to each venue's unique needs and opportunities</p>
+            </div>
+
+            <div class="venue-filters">
+                <button class="filter-btn active" data-filter="all">All Venues</button>
+                <button class="filter-btn" data-filter="outdoor">Outdoor</button>
+                <button class="filter-btn" data-filter="indoor">Indoor</button>
+                <button class="filter-btn" data-filter="operations">Operations</button>
+            </div>
+
+            <div class="venues-grid">
+
+                <!-- Jordan-Hare Stadium (Featured) -->
+                <div class="venue-card venue-featured" data-type="outdoor" data-venue="jordan-hare">
+                    <div class="venue-card-header">
+                        <div class="venue-icon">🏟️</div>
+                        <div class="venue-capacity">88,043</div>
+                    </div>
+                    <div class="venue-card-body">
+                        <h3>Jordan-Hare Stadium</h3>
+                        <p class="venue-sport">Football</p>
+                        <p class="venue-tagline">Concourse displays with live feeds and replays. LED tunnel effects for player entrance. Crowd flow sensors at every gate. In-seat fan polls during timeouts. Mobile wayfinding across 88,000 seats.</p>
+                        <div class="venue-tags">
+                            <span class="venue-tag">Common Spaces</span>
+                            <span class="venue-tag">Atmosphere</span>
+                            <span class="venue-tag">People Monitoring</span>
+                            <span class="venue-tag">Fan Engagement</span>
+                            <span class="venue-tag">Fan Zone</span>
+                            <span class="venue-tag">Mobile</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Neville Arena -->
+                <div class="venue-card" data-type="indoor" data-venue="neville-arena">
+                    <div class="venue-card-header">
+                        <div class="venue-icon">🏀</div>
+                        <div class="venue-capacity">9,121</div>
+                    </div>
+                    <div class="venue-card-body">
+                        <h3>Neville Arena</h3>
+                        <p class="venue-sport">Basketball / Volleyball / Gymnastics</p>
+                        <p class="venue-tagline">Lobby and concourse displays. LED accent lighting synced to game moments. Occupancy tracking. Social media walls. Premium suite streaming.</p>
+                        <div class="venue-tags">
+                            <span class="venue-tag">Common Spaces</span>
+                            <span class="venue-tag">Atmosphere</span>
+                            <span class="venue-tag">People Monitoring</span>
+                            <span class="venue-tag">Fan Engagement</span>
+                            <span class="venue-tag">Fan Zone</span>
+                            <span class="venue-tag">Mobile</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plainsman Park -->
+                <div class="venue-card" data-type="outdoor" data-venue="plainsman-park">
+                    <div class="venue-card-header">
+                        <div class="venue-icon">&#9918;</div>
+                        <div class="venue-capacity">7,189</div>
+                    </div>
+                    <div class="venue-card-body">
+                        <h3>Plainsman Park</h3>
+                        <p class="venue-sport">Baseball</p>
+                        <p class="venue-tagline">Concourse game feeds and digital menus. Curated audio zones along the concourse. Wait time displays at concessions. Trivia between innings. Mobile ordering.</p>
+                        <div class="venue-tags">
+                            <span class="venue-tag">Common Spaces</span>
+                            <span class="venue-tag">Atmosphere</span>
+                            <span class="venue-tag">People Monitoring</span>
+                            <span class="venue-tag">Fan Engagement</span>
+                            <span class="venue-tag">Mobile</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jane B. Moore Field -->
+                <div class="venue-card" data-type="outdoor" data-venue="moore-field">
+                    <div class="venue-card-header">
+                        <div class="venue-icon">🥎</div>
+                        <div class="venue-capacity">2,900</div>
+                    </div>
+                    <div class="venue-card-body">
+                        <h3>Jane B. Moore Field</h3>
+                        <p class="venue-sport">Softball</p>
+                        <p class="venue-tagline">Informational displays at entrances. Entrance hype effects. Gate density sensors during peak games. Photo moment stations. Digital ticketing.</p>
+                        <div class="venue-tags">
+                            <span class="venue-tag">Common Spaces</span>
+                            <span class="venue-tag">Atmosphere</span>
+                            <span class="venue-tag">People Monitoring</span>
+                            <span class="venue-tag">Fan Engagement</span>
+                            <span class="venue-tag">Mobile</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Auburn Soccer Complex -->
+                <div class="venue-card" data-type="outdoor" data-venue="soccer-complex">
+                    <div class="venue-card-header">
+                        <div class="venue-icon">&#9917;</div>
+                        <div class="venue-capacity">1,500</div>
+                    </div>
+                    <div class="venue-card-body">
+                        <h3>Auburn Soccer Complex</h3>
+                        <p class="venue-sport">Soccer</p>
+                        <p class="venue-tagline">Live feed displays. Accent lighting around the pitch. Crowd flow tracking. Social wall integration. Push notifications for match updates.</p>
+                        <div class="venue-tags">
+                            <span class="venue-tag">Common Spaces</span>
+                            <span class="venue-tag">Atmosphere</span>
+                            <span class="venue-tag">People Monitoring</span>
+                            <span class="venue-tag">Fan Engagement</span>
+                            <span class="venue-tag">Mobile</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Woltosz Football Performance Center -->
+                <div class="venue-card" data-type="operations" data-venue="woltosz">
+                    <div class="venue-card-header">
+                        <div class="venue-icon">🏈</div>
+                        <div class="venue-capacity">Operations</div>
+                    </div>
+                    <div class="venue-card-body">
+                        <h3>Woltosz Football Performance Center</h3>
+                        <p class="venue-sport">Football Operations</p>
+                        <p class="venue-tagline">Distributed displays across 233K sq ft. Premium meeting room AV. VIP hospitality tech for recruits and donors. Recruiting showcase experiences.</p>
+                        <div class="venue-tags">
+                            <span class="venue-tag">Common Spaces</span>
+                            <span class="venue-tag">Atmosphere</span>
+                            <span class="venue-tag">Fan Zone</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Yarbrough Tennis Center -->
+                <div class="venue-card" data-type="outdoor" data-venue="yarbrough">
+                    <div class="venue-card-header">
+                        <div class="venue-icon">🎾</div>
+                        <div class="venue-capacity">33K sq ft</div>
+                    </div>
+                    <div class="venue-card-body">
+                        <h3>Yarbrough Tennis Center</h3>
+                        <p class="venue-sport">Tennis</p>
+                        <p class="venue-tagline">Court-side information displays. Ambient audio for match atmosphere. Live scoring integration. Mobile match updates and scheduling.</p>
+                        <div class="venue-tags">
+                            <span class="venue-tag">Common Spaces</span>
+                            <span class="venue-tag">Atmosphere</span>
+                            <span class="venue-tag">Mobile</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- James E. Martin Aquatics Center -->
+                <div class="venue-card" data-type="indoor" data-venue="martin-aquatics">
+                    <div class="venue-card-header">
+                        <div class="venue-icon">🏊</div>
+                        <div class="venue-capacity">1,800</div>
+                    </div>
+                    <div class="venue-card-body">
+                        <h3>James E. Martin Aquatics Center</h3>
+                        <p class="venue-sport">Swimming & Diving</p>
+                        <p class="venue-tagline">Results and timing displays throughout. LED pool deck lighting. Live scoring integration with timing systems. Event live streaming.</p>
+                        <div class="venue-tags">
+                            <span class="venue-tag">Common Spaces</span>
+                            <span class="venue-tag">Atmosphere</span>
+                            <span class="venue-tag">Fan Engagement</span>
+                            <span class="venue-tag">Mobile</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hutsell-Rosen Track -->
+                <div class="venue-card" data-type="outdoor" data-venue="hutsell-rosen">
+                    <div class="venue-card-header">
+                        <div class="venue-icon">🏃</div>
+                        <div class="venue-capacity">IAAF Class 1</div>
+                    </div>
+                    <div class="venue-card-body">
+                        <h3>Hutsell-Rosen Track</h3>
+                        <p class="venue-sport">Track & Field</p>
+                        <p class="venue-tagline">Results boards and real-time event displays. Distributed audio for field events. Live timing integration. Mobile event schedules and results.</p>
+                        <div class="venue-tags">
+                            <span class="venue-tag">Common Spaces</span>
+                            <span class="venue-tag">Atmosphere</span>
+                            <span class="venue-tag">Mobile</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Equestrian Center -->
+                <div class="venue-card" data-type="indoor" data-venue="equestrian">
+                    <div class="venue-card-header">
+                        <div class="venue-icon">🐴</div>
+                        <div class="venue-capacity">80 Acres</div>
+                    </div>
+                    <div class="venue-card-body">
+                        <h3>Auburn Equestrian Center</h3>
+                        <p class="venue-sport">Equestrian</p>
+                        <p class="venue-tagline">Arena displays and scoring integration. Competition audio system. Live event streaming from all four arenas. Mobile event information.</p>
+                        <div class="venue-tags">
+                            <span class="venue-tag">Common Spaces</span>
+                            <span class="venue-tag">Atmosphere</span>
+                            <span class="venue-tag">Fan Engagement</span>
+                            <span class="venue-tag">Mobile</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- INVESTMENT -->
+    <section id="investment" class="section section-dark">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Investment Approach</h2>
+                <div class="title-accent-line"></div>
+                <p class="section-subtitle">Strategic technology investments designed to scale across all Auburn Athletics venues</p>
+            </div>
+
+            <div class="approach-grid">
+                <div class="approach-card">
+                    <h3>Phased Rollout</h3>
+                    <p>Start with the highest-impact venues — Jordan-Hare and Neville Arena — then expand proven technology templates across remaining facilities.</p>
+                </div>
+                <div class="approach-card">
+                    <h3>Scalable Design</h3>
+                    <p>Each focus area is built as a reusable technology package. What works for 88,000 seats scales down to 1,500 — same platform, same management.</p>
+                </div>
+                <div class="approach-card">
+                    <h3>Quick Wins First</h3>
+                    <p>Many improvements — IPTV distribution, digital signage, mobile wayfinding — can be deployed in weeks, not months. Visible impact on day one.</p>
+                </div>
+            </div>
+
+            <div class="investment-summary">
+                <div class="summary-card">
+                    <h4>Focus Areas</h4>
+                    <div class="summary-amount">6</div>
+                    <p>Technology categories applied across every venue</p>
+                </div>
+                <div class="summary-card">
+                    <h4>Venues</h4>
+                    <div class="summary-amount">10</div>
+                    <p>Facilities receiving targeted improvements</p>
+                </div>
+                <div class="summary-card">
+                    <h4>Total Capacity</h4>
+                    <div class="summary-amount">109K+</div>
+                    <p>Seats enhanced across Auburn Athletics</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEXT STEPS -->
+    <section id="next-steps" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Next Steps</h2>
+                <div class="title-accent-line"></div>
+                <p class="section-subtitle">A clear path from concept to implementation</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h4>Discovery Meeting</h4>
+                    <p>Discuss priorities, budget parameters, and venue-specific needs with stakeholders</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h4>Venue Assessments</h4>
+                    <p>Walk each facility, document current infrastructure, identify quick wins</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h4>Proposal Refinement</h4>
+                    <p>Detailed scope, timeline, and budget tailored to each venue and focus area</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h4>Pilot Deployment</h4>
+                    <p>Launch high-impact quick wins at priority venues, measure results, then scale</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div>
+                <span class="logo-text">AUBURN</span>
+                <span class="logo-subtext">Athletics Technology Proposal</span>
+            </div>
+            <p class="footer-copy">March 2026 &mdash; Prepared by Williams Digital</p>
+        </div>
+        <div class="war-eagle-text">WAR EAGLE</div>
+    </footer>
+
+    <!-- MODAL -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal" id="modal">
+            <div class="modal-header">
+                <h2 id="modalTitle"></h2>
+                <p id="modalSubtitle"></p>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <script>
+        /* ========================================
+           NAVIGATION
+           ======================================== */
+        const navbar = document.getElementById('navbar');
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        navToggle.addEventListener('click', () => {
+            navToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        /* ========================================
+           SCROLL ANIMATIONS
+           ======================================== */
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px 0px -60px 0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        function initAnimations() {
+            const animatedElements = document.querySelectorAll('.focus-card, .venue-card, .approach-card, .summary-card, .step-card');
+            animatedElements.forEach((el, index) => {
+                const siblings = el.parentElement.children;
+                const siblingIndex = Array.from(siblings).indexOf(el);
+                el.style.transitionDelay = (siblingIndex * 0.1) + 's';
+                observer.observe(el);
+            });
+        }
+
+        /* ========================================
+           COUNTER ANIMATION
+           ======================================== */
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number[data-target]');
+            const counterObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const el = entry.target;
+                        const target = parseInt(el.dataset.target);
+                        const suffix = el.dataset.suffix || '';
+                        const duration = 2000;
+                        const startTime = performance.now();
+
+                        function updateCounter(currentTime) {
+                            const elapsed = currentTime - startTime;
+                            const progress = Math.min(elapsed / duration, 1);
+                            const eased = 1 - Math.pow(1 - progress, 3);
+                            const current = Math.round(target * eased);
+                            el.textContent = current + suffix;
+
+                            if (progress < 1) {
+                                requestAnimationFrame(updateCounter);
+                            }
+                        }
+
+                        requestAnimationFrame(updateCounter);
+                        counterObserver.unobserve(el);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            counters.forEach(counter => counterObserver.observe(counter));
+        }
+
+        /* ========================================
+           VENUE FILTERS
+           ======================================== */
+        function initFilters() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const venueCards = document.querySelectorAll('.venue-card');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const filter = this.dataset.filter;
+
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+
+                    venueCards.forEach(card => {
+                        const matches = filter === 'all' || card.dataset.type === filter;
+                        card.style.display = matches ? '' : 'none';
+                        if (matches) {
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(20px)';
+                            requestAnimationFrame(() => {
+                                card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            });
+                        }
+                    });
+                });
+            });
+        }
+
+        /* ========================================
+           MODAL SYSTEM
+           ======================================== */
+        const venueData = {
+            'jordan-hare': {
+                title: 'Jordan-Hare Stadium',
+                subtitle: 'Football — 88,043 Capacity',
+                stats: [
+                    { value: '88,043', label: 'Seats' },
+                    { value: '6', label: 'Focus Areas' },
+                    { value: '#1', label: 'Priority Venue' }
+                ],
+                sections: [
+                    { title: 'Common Spaces', content: 'IPTV distribution across all concourse levels. Live game feeds, replays, and other Auburn sports at every concession area. Digital menu boards at all food stations. Informational displays at every gate entrance with real-time directions and event info.' },
+                    { title: 'Atmosphere', content: 'LED accent lighting in the player tunnel synced to pre-game entrance. Coordinated crowd lighting wristbands for night games. Curated audio zones in premium concourse areas. Hype moment sequences during timeouts and between quarters.' },
+                    { title: 'People Monitoring', content: 'Occupancy sensors at all 24 gates for real-time crowd flow management. Wait time displays at every concession stand and restroom cluster. Crowd density heat maps for operations center. Emergency evacuation flow optimization.' },
+                    { title: 'Fan Engagement', content: 'In-seat polls and trivia during timeouts via mobile. Social media walls on concourse displays. AR photo moments at iconic stadium locations. Gamification with loyalty points for attending Auburn events across all sports.' },
+                    { title: 'Mobile Experience', content: 'Turn-by-turn wayfinding to seats, restrooms, and concessions. Mobile food ordering with pickup alerts. Digital ticketing with transfer capabilities. Personalized push notifications for game moments and promotions. Parking lot guidance.' }
+                ]
+            },
+            'neville-arena': {
+                title: 'Neville Arena',
+                subtitle: 'Basketball / Volleyball / Gymnastics — 9,121 Capacity',
+                stats: [
+                    { value: '9,121', label: 'Seats' },
+                    { value: '6', label: 'Focus Areas' },
+                    { value: '3', label: 'Sports' }
+                ],
+                sections: [
+                    { title: 'Common Spaces', content: 'Lobby and concourse displays showing live game feeds, other Auburn games in progress, and upcoming event promotions. Digital menu boards at all concession points.' },
+                    { title: 'Atmosphere', content: 'LED accent lighting synced to game moments — scoring runs, timeouts, introductions. Court-side lighting effects for player intros. Audio zone management for different concourse areas.' },
+                    { title: 'People Monitoring', content: 'Entry gate flow monitoring. Real-time concession wait times. Occupancy tracking across levels to identify underutilized spaces and optimize staffing.' },
+                    { title: 'Fan Engagement', content: 'Social media wall displayed during timeouts. In-app trivia and polls. AR photo opportunities at the Neville Arena entrance. Cross-sport loyalty program integration.' },
+                    { title: 'Mobile Experience', content: 'Seat-level wayfinding in a multi-sport venue. Mobile ordering from concessions. Event schedule integration for back-to-back volleyball/basketball/gymnastics events.' }
+                ]
+            },
+            'plainsman-park': {
+                title: 'Plainsman Park',
+                subtitle: 'Baseball — 7,189 Capacity',
+                stats: [
+                    { value: '7,189', label: 'Seats' },
+                    { value: '5', label: 'Focus Areas' },
+                    { value: '#1', label: 'Baseball America' }
+                ],
+                sections: [
+                    { title: 'Common Spaces', content: 'Concourse TVs showing the live game feed and pitch-by-pitch data. Digital menu boards at all concession windows. Informational displays at the Broadway Club and 984 Club.' },
+                    { title: 'Atmosphere', content: 'Curated audio zones along the concourse — game audio in some areas, music in others. LED accent lighting along the War Eagle Wall. Between-inning entertainment integration.' },
+                    { title: 'People Monitoring', content: 'Wait time tracking at concession stands. Gate entry flow during Friday/Saturday peak attendance. Density monitoring for standing-room areas.' },
+                    { title: 'Fan Engagement', content: 'Between-inning trivia on mobile. Social wall showing fan posts. Photo moment station near the War Eagle Wall with AR overlays.' },
+                    { title: 'Mobile Experience', content: 'Mobile ordering from concessions. In-app lineup and pitch tracking. Real-time game stats and alerts. Parking guidance for the surrounding lots.' }
+                ]
+            },
+            'moore-field': {
+                title: 'Jane B. Moore Field',
+                subtitle: 'Softball — 2,900 Capacity',
+                stats: [
+                    { value: '2,900', label: 'Seats' },
+                    { value: '5', label: 'Focus Areas' },
+                    { value: 'Growing', label: 'Attendance' }
+                ],
+                sections: [
+                    { title: 'Common Spaces', content: 'Entrance displays with game info and promotions. Concession area screens showing the live feed. Digital menu boards.' },
+                    { title: 'Atmosphere', content: 'Entrance hype effects for player introductions. LED accent lighting in key areas. Audio atmosphere management for an intimate venue feel.' },
+                    { title: 'People Monitoring', content: 'Gate density sensors to manage the surging attendance. Temporary seating flow management for peak games. Concession wait tracking.' },
+                    { title: 'Fan Engagement', content: 'Photo moment station. In-app trivia and polls between innings. Social media integration for the growing fanbase.' },
+                    { title: 'Mobile Experience', content: 'Digital ticketing especially for high-demand games. Push notifications for schedule changes and promotions. Mobile concession ordering.' }
+                ]
+            },
+            'soccer-complex': {
+                title: 'Auburn Soccer Complex',
+                subtitle: 'Soccer — 1,500 Capacity',
+                stats: [
+                    { value: '1,500', label: 'Seats' },
+                    { value: '5', label: 'Focus Areas' },
+                    { value: 'Since 1994', label: 'Established' }
+                ],
+                sections: [
+                    { title: 'Common Spaces', content: 'Live feed displays near entrance and concession areas. Informational signage with match info, rosters, and upcoming schedule.' },
+                    { title: 'Atmosphere', content: 'Accent lighting around the pitch perimeter for evening matches. Pre-match audio atmosphere. Goal celebration effects.' },
+                    { title: 'People Monitoring', content: 'Gate flow tracking. Capacity monitoring for high-attendance SEC matches.' },
+                    { title: 'Fan Engagement', content: 'Social wall integration. Match prediction polls on mobile. Photo opportunities with team branding.' },
+                    { title: 'Mobile Experience', content: 'Push notifications for match updates and score alerts. Live match stats in-app. Schedule integration across all Auburn sports.' }
+                ]
+            },
+            'woltosz': {
+                title: 'Woltosz Football Performance Center',
+                subtitle: 'Football Operations — 233,000 sq ft',
+                stats: [
+                    { value: '233K', label: 'Sq Ft' },
+                    { value: '3', label: 'Focus Areas' },
+                    { value: '$92M', label: 'Facility' }
+                ],
+                sections: [
+                    { title: 'Common Spaces', content: 'Distributed displays throughout the 233,000 sq ft facility. Digital signage in lobbies, hallways, meeting rooms, and the player development lab. Live Auburn sports feeds across the facility.' },
+                    { title: 'Atmosphere', content: 'Premium AV in meeting and film rooms. LED accent lighting in recruiting tour areas. Branded digital experiences in the lobby and player spaces.' },
+                    { title: 'Premium Spaces', content: 'VIP hospitality technology for recruits and donors. High-end presentation capabilities in meeting spaces. Immersive recruiting showcase experiences that highlight Auburn Athletics.' }
+                ]
+            },
+            'yarbrough': {
+                title: 'Yarbrough Tennis Center',
+                subtitle: 'Tennis — 33,314 sq ft Indoor + 28 Outdoor Courts',
+                stats: [
+                    { value: '33K', label: 'Sq Ft' },
+                    { value: '3', label: 'Focus Areas' },
+                    { value: 'USTA Award', label: '2025' }
+                ],
+                sections: [
+                    { title: 'Common Spaces', content: 'Court-side information displays showing live match scores, upcoming matches, and facility information. Digital signage in the pro shop and lobby areas.' },
+                    { title: 'Atmosphere', content: 'Ambient audio management for indoor and outdoor courts. Lighting atmosphere for evening matches and events.' },
+                    { title: 'Mobile Experience', content: 'Live match scoring updates via mobile. Court scheduling and availability. Event schedules for dual matches and tournaments.' }
+                ]
+            },
+            'martin-aquatics': {
+                title: 'James E. Martin Aquatics Center',
+                subtitle: 'Swimming & Diving — 77,629 sq ft',
+                stats: [
+                    { value: '1,800', label: 'Spectators' },
+                    { value: '4', label: 'Focus Areas' },
+                    { value: '8x', label: 'NCAA Champs' }
+                ],
+                sections: [
+                    { title: 'Common Spaces', content: 'Results and timing displays throughout the facility. Live feed screens in lobby and spectator areas. Digital event schedules and heat sheets.' },
+                    { title: 'Atmosphere', content: 'LED pool deck lighting for meet atmosphere. Synchronized lighting effects for introductions and record-breaking swims. Audio management across the three-pool facility.' },
+                    { title: 'Fan Engagement', content: 'Live results integration with the timing system displayed throughout the facility. Heat-by-heat updates for spectators. Record tracking displays.' },
+                    { title: 'Mobile Experience', content: 'Real-time results on mobile with push notifications for Auburn swimmers. Meet schedules and heat sheets in-app. Live streaming integration.' }
+                ]
+            },
+            'hutsell-rosen': {
+                title: 'Hutsell-Rosen Track',
+                subtitle: 'Track & Field — IAAF Class 1 Certified',
+                stats: [
+                    { value: 'Class 1', label: 'IAAF Rating' },
+                    { value: '3', label: 'Focus Areas' },
+                    { value: '1 of 5', label: 'In the US' }
+                ],
+                sections: [
+                    { title: 'Common Spaces', content: 'Results boards showing real-time event results. Informational displays for multi-event meets with simultaneous field and track events. Schedule boards.' },
+                    { title: 'Atmosphere', content: 'Distributed audio coverage for field event areas. Announcer integration across the full facility. Ambient music and energy management for long meet days.' },
+                    { title: 'Mobile Experience', content: 'Real-time event results and schedule tracking on mobile. Push notifications for Auburn athletes competing. Live timing integration.' }
+                ]
+            },
+            'equestrian': {
+                title: 'Auburn Equestrian Center',
+                subtitle: 'Equestrian — 80-Acre Facility, 4 Arenas',
+                stats: [
+                    { value: '80', label: 'Acres' },
+                    { value: '4', label: 'Focus Areas' },
+                    { value: '6x', label: 'National Champs' }
+                ],
+                sections: [
+                    { title: 'Common Spaces', content: 'Arena displays showing live scoring and event information across Carroll Arena, Covered Arena, Flat Arena, and Schooling Arena. Digital signage at Williams Family Barn.' },
+                    { title: 'Atmosphere', content: 'Competition audio systems in all four arenas. Lighting atmosphere for indoor arena events. Entrance and introduction effects for major competitions.' },
+                    { title: 'Fan Engagement', content: 'Live scoring integration displayed on screens. Event explanation content for spectators unfamiliar with equestrian scoring. Social media integration.' },
+                    { title: 'Mobile Experience', content: 'Event schedules and real-time results on mobile. Push notifications for Auburn riders competing. Facility map and wayfinding across the 80-acre complex.' }
+                ]
+            }
+        };
+
+        function openModal(venueId) {
+            const data = venueData[venueId];
+            if (!data) return;
+
+            document.getElementById('modalTitle').textContent = data.title;
+            document.getElementById('modalSubtitle').textContent = data.subtitle;
+
+            let bodyHTML = '<div class="modal-stats">';
+            data.stats.forEach(stat => {
+                bodyHTML += `<div class="modal-stat"><div class="modal-stat-value">${stat.value}</div><div class="modal-stat-label">${stat.label}</div></div>`;
+            });
+            bodyHTML += '</div>';
+
+            data.sections.forEach(section => {
+                bodyHTML += `<div class="modal-section"><h3>${section.title}</h3><p>${section.content}</p></div>`;
+            });
+
+            document.getElementById('modalBody').innerHTML = bodyHTML;
+
+            const overlay = document.getElementById('modalOverlay');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('modalOverlay').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // Make venue cards clickable
+        document.querySelectorAll('.venue-card').forEach(card => {
+            card.style.cursor = 'pointer';
+            card.addEventListener('click', function() {
+                openModal(this.dataset.venue);
+            });
+        });
+
+        /* ========================================
+           INIT
+           ======================================== */
+        document.addEventListener('DOMContentLoaded', () => {
+            initAnimations();
+            animateCounters();
+            initFilters();
+        });
+    </script>
+</body>
+</html>
