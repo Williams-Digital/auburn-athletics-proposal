@@ -2614,7 +2614,7 @@
                 </div>
 
                 <div class="graffiti-card">
-                    <div class="graffiti-card-visual" style="background-image: url('https://images.unsplash.com/photo-1582985043002-751d768ded08?w=800&q=80')">
+                    <div class="graffiti-card-visual" style="background-image: url('images/unnamed-2.jpg')">
                         <span class="graffiti-emoji">⭐</span>
                     </div>
                     <div class="graffiti-card-body">
@@ -2625,7 +2625,7 @@
                 </div>
 
                 <div class="graffiti-card">
-                    <div class="graffiti-card-visual" style="background-image: url('https://images.unsplash.com/photo-1569880153113-76e33fc52d5f?w=800&q=80')">
+                    <div class="graffiti-card-visual" style="background-image: url('images/unnamed-1.jpg')">
                         <span class="graffiti-emoji">🏅</span>
                     </div>
                     <div class="graffiti-card-body">
@@ -2635,14 +2635,14 @@
                     </div>
                 </div>
 
-                <div class="graffiti-card">
-                    <div class="graffiti-card-visual" style="background-image: url('https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800&q=80')">
+                <div class="graffiti-card" data-graffiti="interactive-art-wall" style="cursor: pointer;" onclick="openGraffitiModal('interactive-art-wall')">
+                    <div class="graffiti-card-visual" style="background-image: url('images/unnamed.jpg')">
                         <span class="graffiti-emoji">📱</span>
                     </div>
                     <div class="graffiti-card-body">
                         <h4>Interactive Art Wall</h4>
                         <p>QR-code-enabled murals that come alive on your phone — scan to see video highlights, hear player interviews, and explore stats behind the art.</p>
-                        <span class="graffiti-tag">Tech + Art</span>
+                        <span class="graffiti-tag">Tech + Art — Click for Locations</span>
                     </div>
                 </div>
 
@@ -3629,6 +3629,72 @@
                 openModal(this.dataset.venue);
             });
         });
+
+        /* ========================================
+           GRAFFITI MODALS
+           ======================================== */
+        const graffitiData = {
+            'interactive-art-wall': {
+                title: 'Interactive Art Wall',
+                subtitle: 'QR-enabled murals that come alive on your phone',
+                stats: [
+                    { value: '5', label: 'Prime Locations' },
+                    { value: 'QR', label: 'Scan to Engage' },
+                    { value: 'AR', label: 'Augmented Reality' },
+                    { value: '∞', label: 'Content Updates' }
+                ],
+                sections: [
+                    {
+                        title: '1. Gameday Guest Services Hub (Gate 1C)',
+                        content: 'Located on the northeast corner of Jordan-Hare Stadium, right across from the Melton Student Center. This is the primary destination for fans on gamedays — it already serves as a hub for info and services with phone charging stations nearby. The perfect spot for an interactive mural where people are already looking for content and engagement. Fans scan QR codes to see video highlights, hear legendary calls, and explore the stats behind the art.'
+                    },
+                    {
+                        title: '2. The War Eagle Wall (Downtown / J&M Bookstore)',
+                        content: 'The brick wall at 115 S. College St., adjacent to the iconic J&M Bookstore. This is arguably the most photographed spot on The Plains — fans already flock here for selfies. Adding a QR-enabled layer to this historic "War Eagle" and "Go Tigers" spot transforms a traditional photo-op into a modern digital experience. Scan to hear the story of the first War Eagle, see historic photos overlay the current wall, and share an AR-enhanced selfie.'
+                    },
+                    {
+                        title: '3. Melton Student Center (Main Lobby or Outdoor Terrace)',
+                        content: 'Located at 255 Heisman Drive, this is the "living room" of the university with the highest daily student traffic on campus. An interactive wall here would be a staple for current students to see daily "History Highlights" or hear interviews with current student-athletes — bridging the gap between Auburn\'s legacy and the present. Content updates weekly to keep students coming back.'
+                    },
+                    {
+                        title: '4. Tiger Walk (Donahue Drive near Plainsman Park)',
+                        content: 'The stretch of Donahue Drive where the Tiger Walk processional happens — deeply tied to Auburn\'s history. A mural here allows fans to scan and "see" historic Tiger Walks from the 80s and 90s, hear a legendary speech from a coach, or watch a highlight reel from the greatest games — right in the spot where those memories are made. On gamedays, the content shifts to feature the current team\'s roster and pre-game hype.'
+                    },
+                    {
+                        title: '5. Jule Collins Smith Museum (Sculpture Garden)',
+                        content: 'The outdoor walking paths or lobby area of Auburn\'s cultural cornerstone. For a more "high-art" feel, an interactive wall here focuses on the making of the art itself — scan to see a time-lapse of the graffiti artist at work, hear the artist explain their vision, and explore the symbolism in each element. This is where art meets technology meets Auburn tradition in the most refined way.'
+                    },
+                    {
+                        title: 'How It Works',
+                        content: 'Each Interactive Art Wall features large-scale, professionally painted murals with embedded QR codes at key focal points. Fans scan with their phone camera to unlock: video highlights tied to the art\'s subject, player interviews and behind-the-scenes content, AR overlays that animate the mural, historical photo comparisons (then vs. now), and shareable social media content with Auburn-branded frames. Content is managed through a CMS and can be updated seasonally without changing the physical mural.'
+                    }
+                ]
+            }
+        };
+
+        function openGraffitiModal(id) {
+            const data = graffitiData[id];
+            if (!data) return;
+
+            document.getElementById('modalTitle').textContent = data.title;
+            document.getElementById('modalSubtitle').textContent = data.subtitle;
+
+            let bodyHTML = '<div class="modal-stats">';
+            data.stats.forEach(stat => {
+                bodyHTML += `<div class="modal-stat"><div class="modal-stat-value">${stat.value}</div><div class="modal-stat-label">${stat.label}</div></div>`;
+            });
+            bodyHTML += '</div>';
+
+            data.sections.forEach(section => {
+                bodyHTML += `<div class="modal-section"><h3>${section.title}</h3><p>${section.content}</p></div>`;
+            });
+
+            document.getElementById('modalBody').innerHTML = bodyHTML;
+
+            const overlay = document.getElementById('modalOverlay');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
 
         /* ========================================
            INIT
