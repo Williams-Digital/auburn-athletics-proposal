@@ -1080,6 +1080,263 @@
         }
 
         /* ========================================
+           TECHNOLOGY DASHBOARD
+           ======================================== */
+        .dashboard-section {
+            background: linear-gradient(180deg, var(--auburn-navy-dark) 0%, var(--auburn-navy) 100%);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dashboard-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(232,119,34,0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .dashboard-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .dashboard-info h3 {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .dashboard-info h3 span {
+            color: var(--auburn-orange);
+        }
+
+        .dashboard-info > p {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .dashboard-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .dash-feature {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+            padding: 1.25rem;
+            transition: background var(--transition-fast), transform var(--transition-fast);
+        }
+
+        .dash-feature:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+
+        .dash-feature-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .dash-feature h4 {
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            margin-bottom: 0.3rem;
+        }
+
+        .dash-feature p {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.5;
+        }
+
+        /* Dashboard Mockup */
+        .dashboard-mockup {
+            background: var(--gray-900);
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .dashboard-mockup.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .mockup-titlebar {
+            background: rgba(255,255,255,0.05);
+            padding: 0.6rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .mockup-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .mockup-dot.red { background: #ff5f57; }
+        .mockup-dot.yellow { background: #ffbd2e; }
+        .mockup-dot.green { background: #28c840; }
+
+        .mockup-title {
+            font-family: var(--font-body);
+            font-size: 0.65rem;
+            color: rgba(255,255,255,0.4);
+            margin-left: 0.5rem;
+        }
+
+        .mockup-body {
+            padding: 1.25rem;
+        }
+
+        .mockup-nav {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .mockup-nav-item {
+            font-family: var(--font-heading);
+            font-size: 0.6rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 0.4rem 0.75rem;
+            border-radius: 6px;
+            color: rgba(255,255,255,0.4);
+            background: transparent;
+        }
+
+        .mockup-nav-item.active {
+            background: var(--auburn-orange);
+            color: var(--white);
+        }
+
+        .mockup-stats-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .mockup-stat-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 8px;
+            padding: 0.75rem;
+            text-align: center;
+        }
+
+        .mockup-stat-num {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--auburn-orange);
+        }
+
+        .mockup-stat-lbl {
+            font-size: 0.55rem;
+            color: rgba(255,255,255,0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 600;
+        }
+
+        .mockup-tickets {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .mockup-ticket {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 8px;
+            padding: 0.65rem 0.85rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .mockup-ticket-left {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .mockup-ticket-priority {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+        }
+
+        .priority-high { background: #ef4444; }
+        .priority-med { background: #f59e0b; }
+        .priority-low { background: #22c55e; }
+
+        .mockup-ticket-text {
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .mockup-ticket-venue {
+            font-size: 0.6rem;
+            color: rgba(255,255,255,0.3);
+            font-weight: 600;
+        }
+
+        .mockup-ticket-status {
+            font-family: var(--font-heading);
+            font-size: 0.55rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        .status-open {
+            background: rgba(239,68,68,0.15);
+            color: #ef4444;
+        }
+
+        .status-progress {
+            background: rgba(245,158,11,0.15);
+            color: #f59e0b;
+        }
+
+        .status-resolved {
+            background: rgba(34,197,94,0.15);
+            color: #22c55e;
+        }
+
+        /* ========================================
            GRAFFITI ARTIST PROGRAM
            ======================================== */
         .graffiti-section {
@@ -1229,6 +1486,10 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
+            .dashboard-layout {
+                grid-template-columns: 1fr 1fr;
+            }
+
             .steps-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -1290,8 +1551,17 @@
             .venues-grid,
             .approach-grid,
             .investment-summary,
-            .graffiti-grid {
+            .graffiti-grid,
+            .dashboard-layout {
                 grid-template-columns: 1fr;
+            }
+
+            .dashboard-features {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .mockup-stats-row {
+                grid-template-columns: repeat(2, 1fr);
             }
 
             .graffiti-section::before {
@@ -1350,6 +1620,7 @@
                 <span class="hamburger"></span>
             </button>
             <ul class="nav-menu" id="navMenu">
+                <li><a href="#dashboard" class="nav-link">Dashboard</a></li>
                 <li><a href="#focus-areas" class="nav-link">Focus Areas</a></li>
                 <li><a href="#venues" class="nav-link">Venues</a></li>
                 <li><a href="#investment" class="nav-link">Investment</a></li>
@@ -1394,6 +1665,144 @@
             <div class="scroll-arrow"></div>
         </div>
     </header>
+
+    <!-- TECHNOLOGY DASHBOARD -->
+    <section id="dashboard" class="section dashboard-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" style="color: var(--white);">Athletics Technology Dashboard</h2>
+                <div class="title-accent-line"></div>
+                <p class="section-subtitle">One central platform for every technology need across Auburn Athletics</p>
+            </div>
+
+            <div class="dashboard-layout">
+                <div class="dashboard-info">
+                    <h3>Every Request. <span>Every Venue.</span> One Place.</h3>
+                    <p>A centralized technology dashboard built for Auburn Athletics — where coaches, staff, and administrators submit tickets, track requests, and upload weekly reviews. No more emails lost in inboxes or verbal requests that fall through the cracks. Every need is logged, prioritized, and resolved.</p>
+
+                    <div class="dashboard-features">
+                        <div class="dash-feature">
+                            <div class="dash-feature-icon">🎫</div>
+                            <h4>Ticket System</h4>
+                            <p>Submit requests for AV needs, equipment issues, tech support, or facility upgrades from any venue</p>
+                        </div>
+                        <div class="dash-feature">
+                            <div class="dash-feature-icon">🎬</div>
+                            <h4>Weekly Reviews</h4>
+                            <p>Upload game film for weekly review — flag concerns with officials, players, or game operations</p>
+                        </div>
+                        <div class="dash-feature">
+                            <div class="dash-feature-icon">📊</div>
+                            <h4>Priority Tracking</h4>
+                            <p>Every ticket categorized by venue, urgency, and type. Real-time status updates from submission to resolution</p>
+                        </div>
+                        <div class="dash-feature">
+                            <div class="dash-feature-icon">🏟️</div>
+                            <h4>Venue-Specific</h4>
+                            <p>Filter by venue — see all open requests for Jordan-Hare, Neville Arena, or any facility at a glance</p>
+                        </div>
+                        <div class="dash-feature">
+                            <div class="dash-feature-icon">🔔</div>
+                            <h4>Alerts & Notifications</h4>
+                            <p>Automated alerts for urgent tickets. Weekly digest of open items. Escalation for overdue requests</p>
+                        </div>
+                        <div class="dash-feature">
+                            <div class="dash-feature-icon">📋</div>
+                            <h4>Review Archive</h4>
+                            <p>Searchable archive of all weekly reviews, official concerns, and resolution history by season</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-mockup" id="dashboardMockup">
+                    <div class="mockup-titlebar">
+                        <div class="mockup-dot red"></div>
+                        <div class="mockup-dot yellow"></div>
+                        <div class="mockup-dot green"></div>
+                        <span class="mockup-title">Auburn Athletics Tech Dashboard</span>
+                    </div>
+                    <div class="mockup-body">
+                        <div class="mockup-nav">
+                            <div class="mockup-nav-item active">Tickets</div>
+                            <div class="mockup-nav-item">Weekly Reviews</div>
+                            <div class="mockup-nav-item">Venues</div>
+                            <div class="mockup-nav-item">Reports</div>
+                        </div>
+                        <div class="mockup-stats-row">
+                            <div class="mockup-stat-card">
+                                <div class="mockup-stat-num">12</div>
+                                <div class="mockup-stat-lbl">Open</div>
+                            </div>
+                            <div class="mockup-stat-card">
+                                <div class="mockup-stat-num">8</div>
+                                <div class="mockup-stat-lbl">In Progress</div>
+                            </div>
+                            <div class="mockup-stat-card">
+                                <div class="mockup-stat-num">47</div>
+                                <div class="mockup-stat-lbl">Resolved</div>
+                            </div>
+                            <div class="mockup-stat-card">
+                                <div class="mockup-stat-num">3</div>
+                                <div class="mockup-stat-lbl">Reviews</div>
+                            </div>
+                        </div>
+                        <div class="mockup-tickets">
+                            <div class="mockup-ticket">
+                                <div class="mockup-ticket-left">
+                                    <div class="mockup-ticket-priority priority-high"></div>
+                                    <div>
+                                        <div class="mockup-ticket-text">Concourse TV displays need replacement — Section 4</div>
+                                        <div class="mockup-ticket-venue">Jordan-Hare Stadium</div>
+                                    </div>
+                                </div>
+                                <div class="mockup-ticket-status status-open">Open</div>
+                            </div>
+                            <div class="mockup-ticket">
+                                <div class="mockup-ticket-left">
+                                    <div class="mockup-ticket-priority priority-med"></div>
+                                    <div>
+                                        <div class="mockup-ticket-text">Weekly Review: Officials — Alabama game film uploaded</div>
+                                        <div class="mockup-ticket-venue">Football Operations</div>
+                                    </div>
+                                </div>
+                                <div class="mockup-ticket-status status-progress">In Review</div>
+                            </div>
+                            <div class="mockup-ticket">
+                                <div class="mockup-ticket-left">
+                                    <div class="mockup-ticket-priority priority-med"></div>
+                                    <div>
+                                        <div class="mockup-ticket-text">Stream Deck profile needed for volleyball season</div>
+                                        <div class="mockup-ticket-venue">Neville Arena</div>
+                                    </div>
+                                </div>
+                                <div class="mockup-ticket-status status-progress">In Progress</div>
+                            </div>
+                            <div class="mockup-ticket">
+                                <div class="mockup-ticket-left">
+                                    <div class="mockup-ticket-priority priority-low"></div>
+                                    <div>
+                                        <div class="mockup-ticket-text">Timing system integration — display update complete</div>
+                                        <div class="mockup-ticket-venue">Martin Aquatics Center</div>
+                                    </div>
+                                </div>
+                                <div class="mockup-ticket-status status-resolved">Resolved</div>
+                            </div>
+                            <div class="mockup-ticket">
+                                <div class="mockup-ticket-left">
+                                    <div class="mockup-ticket-priority priority-high"></div>
+                                    <div>
+                                        <div class="mockup-ticket-text">Weekly Review: Player conduct concern — flagged for review</div>
+                                        <div class="mockup-ticket-venue">Football Operations</div>
+                                    </div>
+                                </div>
+                                <div class="mockup-ticket-status status-open">Open</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- FOCUS AREAS -->
     <section id="focus-areas" class="section">
@@ -1977,7 +2386,7 @@
         }, observerOptions);
 
         function initAnimations() {
-            const animatedElements = document.querySelectorAll('.focus-card, .graffiti-card, .venue-card, .approach-card, .summary-card, .step-card');
+            const animatedElements = document.querySelectorAll('.focus-card, .graffiti-card, .venue-card, .approach-card, .summary-card, .step-card, .dashboard-mockup');
             animatedElements.forEach((el, index) => {
                 const siblings = el.parentElement.children;
                 const siblingIndex = Array.from(siblings).indexOf(el);
